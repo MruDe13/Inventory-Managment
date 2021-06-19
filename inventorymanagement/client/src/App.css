@@ -50,8 +50,75 @@
 }
 
 .ListContent {
-  
+  height: 100vh;
+  display: grid;
 }
+
+.NewEntry {
+  background-color: aquamarine;
+  display: grid;
+  grid-template-columns: auto auto;
+   
+}
+
+.SelectList {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+
+.EntryBoxOne {
+  display: flex;
+  height: 100%;
+}
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th{
+  border: 1px solid black;
+  margin: inherit;
+  background-color: gray;
+  padding: 0.5rem;
+  font-size: 10px;
+}
+
+
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  margin: inherit;
+}
+
+
+
+.EntryBoxTwo {
+  display: flex;
+  height: 100%;
+}
+
+.EntryDetails {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.CustomerDetails {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.GoodsDetails {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;}
 
 
 

@@ -1,4 +1,5 @@
 import './App.css';
+import {Link} from 'react-router-dom';
 
 function NavBar(){
     let NavList = ['STOCK', 'CUSTOMER', 'VENDOR'];
@@ -7,7 +8,9 @@ function NavBar(){
 
         return (
             <li className='NavItems'>
+                <Link to={items}  style={{textDecoration:'none', color: 'black'}}>
                 {items}
+                </Link>  
             </li>
         )
     }));
