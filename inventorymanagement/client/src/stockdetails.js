@@ -1,16 +1,18 @@
 import { RawMaterial } from "./store/rawmaterial";
 import './App.css'
 
-
-import DrawTable from "./table/tables";
+import { useState } from "react";
+import DrawTable from "./minorcomponents/tables";
+import Modal from "./minorcomponents/modal";
 
 function StockDetails(){
 
-    let currentStock = RawMaterial;
+
 
     return(
         <div>
-           <DrawTable Table={currentStock}/> 
+           <DrawTable Table={RawMaterial} />
+           
         </div>
     )
 }

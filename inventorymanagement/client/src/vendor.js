@@ -1,5 +1,5 @@
 import { VendorOrders } from "./store/vendor";
-import DrawTable from './table/tables';
+import DrawTable from './minorcomponents/tables';
 
 function Vendor(){
 

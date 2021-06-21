@@ -121,4 +121,18 @@ td {
   align-items: flex-start;}
 
 
+.ModalHide {
+  display: none;
+}
+
+.ModalShow {
+  display: flex;
+  margin-top: 2rem;
+  position: relative;
+  height: auto;
+  width: auto;
+  background-color: aquamarine;
+  align-self: center;
+}
+
 
