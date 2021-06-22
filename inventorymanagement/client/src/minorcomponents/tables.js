@@ -41,7 +41,7 @@ function TableRow(props) {
             
             return (
                 <tr >
-                    <TableData rowValue={rowValue} editable={props.editable} changeDialogStatus={props.changeDialogStatus} index={index}/>
+                    <TableData rowValue={rowValue} editable={props.editable} changeDialogStatus={props.changeDialogStatus} index={index} table={props.table}/>
                 </tr>
             )
         })

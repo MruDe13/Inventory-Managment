@@ -1,3 +1,4 @@
 export const edits = {
-    'newValue': null
+    'newValue': null,
+    'currentState': 'CUSTOMER'
 }

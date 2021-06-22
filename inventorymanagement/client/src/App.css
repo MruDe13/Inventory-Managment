@@ -126,13 +126,30 @@ td {
 }
 
 .ModalShow {
-  display: flex;
-  margin-top: 2rem;
-  position: relative;
-  height: auto;
-  width: auto;
-  background-color: aquamarine;
-  align-self: center;
+  display: block;
+  position: absolute;
+  height: 200vh;
+  width: 100%;
+  z-index: 2000;
+  background-color: black ;
+  opacity: 95%;
 }
 
+.ModalContent {
+  margin:50px;
+  background-color: aquamarine;
+}
 
+.ModalTable {
+  margin-bottom: 50px;
+}
+
+.btn-green {
+  margin: 1rem;
+  background-color: green;
+}
+
+.btn-red {
+  margin: 1rem;
+  background-color: red;
+}

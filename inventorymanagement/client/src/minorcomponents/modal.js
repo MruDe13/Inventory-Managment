@@ -1,33 +1,33 @@
 import '../App.css';
 import updateStore from '../apicalls/updatestore';
 import { edits } from '../store/edits';
+import { currentStore } from '../apicalls/currentstate';
 
 function Modal(props){
     
     console.log('Model Re-Rendered ' + props.index);
     const modalDisplay = props.show ? 'ModalShow' : 'ModalHide' ;
-    let editRow = props.store[props.index];
+    let store = currentStore();
+    let editRow = store[props.index];
 
     if(props.index == -1){
         return null;
     }
 
     function clickHandler(){
-        updateStore(props.index, props.store, edits.newValue);
+        updateStore(props.index, edits.newValue);
         props.closeDialog();
     }
 
     return (
-        <div>
             <div className= {modalDisplay}>
+                <div className='ModalContent'>
                     <EditTable editRow={editRow}/>
-                <div>
-                    <button onClick={props.closeDialog}> Cancel </button>
-                    <button onClick={clickHandler}> Save </button>
+                    <button onClick={props.closeDialog} className='btn-red'> Cancel </button>
+                    <button onClick={clickHandler} className='btn-green'> Save </button>
                 </div>
             </div>
             
-        </div>
     )
 }
 
@@ -35,7 +35,7 @@ function EditTable(props){
 
     let itemName = Object.keys(props.editRow);
     return(
-        <form>
+        <form className='ModalTable'>
             <table>
                 <tr>
                     <th> Items </th>

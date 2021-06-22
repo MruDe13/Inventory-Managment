@@ -1,8 +1,8 @@
-import { customerInfo } from "../store/customer";
-import { VendorOrders } from "../store/vendor";
-import { RawMaterial } from "../store/rawmaterial";
+import { currentStore } from "./currentstate";
 
-function updateStore(index, store, newValue){
+function updateStore(index, newValue){
+
+    let store = currentStore();
     store[index] = newValue;
     console.log( JSON.stringify(store) );
 }

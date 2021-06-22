@@ -5,10 +5,26 @@ import Vendor from './vendor';
 import Stock from './stock';
 import { Switch, Route , Link} from 'react-router-dom';
 import NewEntry from './newentry';
-
+import Modal from './minorcomponents/modal';
+import {useState} from 'react'; 
 
 
 function App() {
+
+  let [show, setShow] = useState(false);
+  let [index, setIndex] = useState(-1);
+
+  function changeDialogStatus(indexValue){
+      console.log("Change dialog status" + indexValue);
+      setIndex(indexValue);
+      setShow(true);
+  }
+
+  function closeDialog(){
+      setShow(false)
+  }
+
+
   return (
     <div className="App">
       <h1 className='AppName'>
@@ -17,12 +33,13 @@ function App() {
       <div className='AppBody'>
         <nav className='NavBar'>
           <ol className='NavList'>
-            <li className='NavItems'>
+            
                 <Link exact to='/'  style={{textDecoration:'none', color: 'black'}}>
+                  <li className='NavItems'>
                   New Entry
-                </Link>  
-            </li>
-            <NavBar/>
+                  </li>
+                </Link>            
+              <NavBar/>
           </ol>
         </nav>
         <div className='ListContent'>
@@ -31,16 +48,17 @@ function App() {
                 <NewEntry/>
               </Route>
               <Route path='/STOCK'>
-                <Stock/> 
+                <Stock changeDialogStatus={changeDialogStatus}/> 
               </Route>
               <Route path='/CUSTOMER'>
-                <Customer/>
+                <Customer changeDialogStatus={changeDialogStatus}/>
               </Route>
               <Route path='/VENDOR'>
-                <Vendor/>
+                <Vendor changeDialogStatus={changeDialogStatus}/>
               </Route>
             </Switch>
         </div>
+          <Modal show={show} index={index} closeDialog={closeDialog} />
       </div>
     </div>
   );

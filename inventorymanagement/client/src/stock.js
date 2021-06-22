@@ -1,14 +1,13 @@
 import StockDetails from "./stockdetails";
 
-function Stock(){
+function Stock(props){
 
     return (
         <div className='StockBook'>
             <div className='SortDetails'>
-
             </div>
             <div className='SortResult'>
-                <StockDetails/>
+                <StockDetails editable={true} changeDialogStatus={props.changeDialogStatus}/>
             </div>
         </div>
     )

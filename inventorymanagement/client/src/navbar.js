@@ -1,5 +1,6 @@
 import './App.css';
 import {Link} from 'react-router-dom';
+import { edits } from './store/edits';
 
 function NavBar(){
     let NavList = ['STOCK', 'CUSTOMER', 'VENDOR'];
@@ -7,11 +8,13 @@ function NavBar(){
     return (NavList.map((items)=>{
 
         return (
-            <li className='NavItems'>
+            
                 <Link to={items}  style={{textDecoration:'none', color: 'black'}}>
-                {items}
+                    <li className='NavItems' onClick={()=>{edits.currentState = items}}>
+                    {items}
+                    </li>
                 </Link>  
-            </li>
+            
         )
     }));
 }
