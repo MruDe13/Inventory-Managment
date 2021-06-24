@@ -1,6 +1,7 @@
-import './App.css';
+import '../App.css';
 import {Link} from 'react-router-dom';
-import { edits } from './store/edits';
+import { edits } from '../store/edits';
+import PurchaseBook from '../store/purchaselist';
 
 function NavBar(){
     let NavList = ['STOCK', 'CUSTOMER', 'VENDOR'];
@@ -10,7 +11,7 @@ function NavBar(){
         return (
             
                 <Link to={items}  style={{textDecoration:'none', color: 'black'}}>
-                    <li className='NavItems' onClick={()=>{edits.currentState = items}}>
+                    <li className='NavItems' onClick={()=>{edits.currentState = items;}}>
                     {items}
                     </li>
                 </Link>  

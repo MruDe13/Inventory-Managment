@@ -1,10 +1,10 @@
 import './App.css';
-import NavBar from './navbar';
-import Customer from './customer';
-import Vendor from './vendor';
-import Stock from './stock';
+import NavBar from './view/navbar';
+import Customer from './view/customer';
+import Vendor from './view/vendor';
+import Stock from './view/stock';
 import { Switch, Route , Link} from 'react-router-dom';
-import NewEntry from './newentry';
+import NewEntry from './view/newentry';
 import Modal from './minorcomponents/modal';
 import {useState} from 'react'; 
 

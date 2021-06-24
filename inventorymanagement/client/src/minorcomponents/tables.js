@@ -5,11 +5,17 @@ import {useState} from 'react';
 
 function DrawTable(props){
 
+    if (props.Table === null || undefined){
+        return null;
+    }
+
     let header = Object.keys(props.Table[0]);
 
     function findIndex(index){
         return index;
     }
+
+
 
     return (
         <div>

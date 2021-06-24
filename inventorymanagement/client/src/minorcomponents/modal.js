@@ -65,7 +65,7 @@ function EditTableItems(props){
             return(
                 <tr>
                     <td>{item.toUpperCase()}</td>
-                    <td key={itemValue} ><input defaultValue={itemValue} id={item} onChange={changeHandler}/></td>
+                    <td key={itemValue} ><input defaultValue={itemValue} id={item} onChange={changeHandler} type={typeof item}/></td>
                 </tr>
             )
         })

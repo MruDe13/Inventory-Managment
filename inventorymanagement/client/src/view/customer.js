@@ -1,5 +1,5 @@
-import DrawTable from "./minorcomponents/tables";
-import { customerInfo } from "./store/customer";
+import DrawTable from "../minorcomponents/tables";
+import { customerInfo } from "../store/customer";
 
 function Customer(props){
 

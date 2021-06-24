@@ -1,6 +1,6 @@
-import { RawMaterial } from "./store/rawmaterial";
-import './App.css'
-import DrawTable from "./minorcomponents/tables";
+import { RawMaterial } from "../store/rawmaterial";
+import '../App.css'
+import DrawTable from "../minorcomponents/tables";
 
 function StockDetails(props){
 
