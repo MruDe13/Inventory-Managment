@@ -2,11 +2,11 @@ import './App.css';
 import NavBar from './view/navbar';
 import Customer from './view/customer';
 import Vendor from './view/vendor';
-import Stock from './view/stock';
 import { Switch, Route , Link} from 'react-router-dom';
 import NewEntry from './view/newentry';
 import Modal from './minorcomponents/modal';
-import {useState} from 'react'; 
+import {useState} from 'react';
+import PurchaseDetails from './view/purchasedetail';
 
 
 function App() {
@@ -47,8 +47,8 @@ function App() {
               <Route exact path='/'>
                 <NewEntry/>
               </Route>
-              <Route path='/STOCK'>
-                <Stock changeDialogStatus={changeDialogStatus}/> 
+              <Route path='/PURCHASE'>
+                <PurchaseDetails changeDialogStatus={changeDialogStatus}/> 
               </Route>
               <Route path='/CUSTOMER'>
                 <Customer changeDialogStatus={changeDialogStatus}/>

@@ -1,28 +1,31 @@
 import DrawTable from '../minorcomponents/tables';
-import PurchaseBook from "../store/purchaselist";
 import {useState , useEffect} from 'react';
 import { edits } from "../store/edits";
-import PostInventoryDetails from '../apicalls/postapi';
 
 
 function Vendor(props){
-    let [PurchaseList, setPurchaseList] = useState([]);
+    let [vendorList, setVendorList] = useState([]);
 
-    PostInventoryDetails();
-
-    edits['setPurchaseList'] = setPurchaseList;
-
-    if (PurchaseList.length === 0){
+    edits['setVendorList'] = setVendorList;
+    edits['vendorList'] = vendorList;
+    
+    if (vendorList.length === 0){
         return (
-            <div> </div>
+            <div> VENDOR LIST IS EMPTY </div>
         )
     }
 
     return (
         <div>
-            <DrawTable Table={PurchaseList} editable={true} changeDialogStatus={props.changeDialogStatus}/>
+            <div>
+            <DrawTable Table={vendorList} editable={false} changeDialogStatus={props.changeDialogStatus}/>
+            </div>
+            <div style={{marginTop:'3%'}}>
+                <button>Add Vendor</button>
+            </div>
         </div>
     )
 }
 
 export default Vendor;
+

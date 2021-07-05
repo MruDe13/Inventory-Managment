@@ -57,8 +57,7 @@
 .NewEntry {
   background-color: aquamarine;
   display: grid;
-  grid-template-columns: auto auto;
-   
+  grid-template-rows: 5rem auto;
 }
 
 .SelectList {
@@ -67,10 +66,24 @@
   align-items: flex-start;
 }
 
+.EntryBox {
+  display: grid;
+  grid-template-columns: auto auto;
+}
 
-.EntryBoxOne {
-  display: flex;
+.EntryBoxView {
+  display: grid;
   height: 100%;
+  grid-template-rows: auto;
+}
+
+.EntryBoxComponent{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 1rem 2rem 1rem 1rem;
+}
+.hide{
+  display: none;
 }
 
 table {

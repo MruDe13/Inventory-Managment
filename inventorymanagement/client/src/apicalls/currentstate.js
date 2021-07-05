@@ -1,6 +1,5 @@
 import { edits } from "../store/edits";
 import { customerInfo } from "../store/customer";
-import { VendorOrders } from "../store/vendor";
 import { RawMaterial } from "../store/rawmaterial";
 
 export function currentStore(){
@@ -10,10 +9,10 @@ export function currentStore(){
     }
 
     if (edits.currentState === 'VENDOR'){
-        return VendorOrders;
+        return edits.vendorList ;
     }
 
-    if (edits.currentState === 'STOCK'){
-        return RawMaterial;
+    if (edits.currentState === 'PURCHASE'){
+        return edits.purchaseList;
     }
 }
