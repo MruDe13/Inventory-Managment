@@ -1,18 +1,22 @@
 import '../App.css';
 import {Link} from 'react-router-dom';
 import { edits } from '../store/edits';
-import VendorList from '../store/vendorlist';
+import VendorDetails from '../store/vendorldetails';
 import PurchaseDetail from '../store/purchasedetail';
+import StockDetails from '../store/stockdetails';
 
 function NavBar(){
-    let NavList = ['PURCHASE', 'CUSTOMER', 'VENDOR'];
+    let NavList = ['PURCHASE', 'STOCK', 'VENDOR'];
     
     function clickHandler(){
         if (edits.currentState==='VENDOR'){
-            VendorList();
+            VendorDetails();
         }
         if (edits.currentState==='PURCHASE'){
             PurchaseDetail()
+        }
+        if (edits.currentState === 'STOCK'){
+            StockDetails()
         }
     }
     

@@ -1,4 +1,4 @@
-async function InventoryDetails (path){
+async function GetInventoryDetails (path){
     let response = await fetch (`http://localhost:3001/${path}`);
 
     let data = await response.json();
@@ -7,4 +7,5 @@ async function InventoryDetails (path){
 }
 
 
-export default InventoryDetails;
+export default GetInventoryDetails;
+

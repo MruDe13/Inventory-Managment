@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { VendorDetails } from '../apicalls/modelclass';
-import PostInventoryDetails from '../apicalls/postapi';
+import { VendorDetails } from '../../apicalls/modelclass';
+import PostInventoryDetails from '../../apicalls/postapi';
 
 
 function VendorEntry(){
@@ -23,10 +23,9 @@ function VendorEntry(){
     function clickHandler(){
         let confirmation = window.confirm('Do you want to proceed?');
         if (confirmation){
-            PostInventoryDetails('vendordetail', formView);
+            PostInventoryDetails('vendortable', formView);
         } else {
-            alert('Cancelled!')
-            
+            alert('Cancelled!')  
         }
         
         

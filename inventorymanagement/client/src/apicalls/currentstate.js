@@ -1,11 +1,13 @@
 import { edits } from "../store/edits";
-import { customerInfo } from "../store/customer";
-import { RawMaterial } from "../store/rawmaterial";
 
 export function currentStore(){
+
+    if (edits.currentState === null){
+        return <div></div>;
+    }
     
-    if (edits.currentState === 'CUSTOMER'){
-        return customerInfo;
+    if (edits.currentState === 'STOCK'){
+        return edits.stockList;
     }
 
     if (edits.currentState === 'VENDOR'){
@@ -16,3 +18,4 @@ export function currentStore(){
         return edits.purchaseList;
     }
 }
+

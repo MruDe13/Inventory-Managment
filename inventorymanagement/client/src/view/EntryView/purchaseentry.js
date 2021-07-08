@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Purchase_Book } from '../apicalls/modelclass';
-import PostInventoryDetails from '../apicalls/postapi';
-import LoadingIndicator from '../minorcomponents/loadingIndicator';
+import { Purchase_Book } from '../../apicalls/modelclass';
+import PostInventoryDetails from '../../apicalls/postapi';
+import LoadingIndicator from '../../minorcomponents/loadingIndicator';
+import ItemList from './itemlist';
+import GetItemList from '../../store/itemlist';
 
 function PurchaseEntry(){
 
@@ -10,6 +12,7 @@ function PurchaseEntry(){
 
     let keys = Object.keys(formView);
     console.log(keys);
+    GetItemList();
 
     function changeHandler(event){
         let id = event.target.id;
@@ -46,10 +49,7 @@ function PurchaseEntry(){
                 </div>
                 <div className='EntryBoxComponent'>
                     <label>Item :</label>
-                    <select id='item'>
-                        <option value='Wheels'>Wheels</option>
-                        <option value='Foam'>Foam</option>
-                    </select>
+                    <ItemList/>
                 </div>
                 <div className='EntryBoxComponent'>
                     <label>Quantity: </label>

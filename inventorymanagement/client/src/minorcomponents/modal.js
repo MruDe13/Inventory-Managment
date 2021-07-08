@@ -7,6 +7,11 @@ function Modal(props){
     
     console.log('Model Re-Rendered ' + props.index);
     const modalDisplay = props.show ? 'ModalShow' : 'ModalHide' ;
+
+    if (currentStore() === null){
+        return <div></div>
+    }
+
     let store = currentStore();
     let editRow = store[props.index];
 

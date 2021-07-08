@@ -20,9 +20,6 @@ function Vendor(props){
             <div>
             <DrawTable Table={vendorList} editable={false} changeDialogStatus={props.changeDialogStatus}/>
             </div>
-            <div style={{marginTop:'3%'}}>
-                <button>Add Vendor</button>
-            </div>
         </div>
     )
 }

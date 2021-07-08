@@ -1,16 +1,12 @@
 const express = require('express');
 const app = express();
-const sqlite = require('sqlite3').verbose();
 const checkFields =  require('./checkinputs/checkfields.js');
+const itemTableRoute = require('./routes/itemtable');
+const purchaseTableRoute = require('./routes/purchasetable');
+const stockTableRoute = require('./routes/stocktable');
+const vendorTableRoute = require('./routes/vendortable');
 
-
-const db = new sqlite.Database("D:\\Database\\SQlite\\InventoryManagement.db", sqlite.OPEN_READWRITE, (err)=>{
-    if (err) {
-        console.log(err);
-    }
-    console.log('Connected to Inventory Management DB.');
-})
-
+app.all('/*', setupCORS);
 
 function setupCORS(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -19,9 +15,14 @@ function setupCORS(req, res, next) {
   next();
 }
 
-app.all('/*', setupCORS);
-
 app.use(express.json());
+app.use('/itemtable', itemTableRoute);
+app.use('/purchasetable', purchaseTableRoute);
+app.use('/stocktable', stockTableRoute);
+app.use('/vendortable', vendorTableRoute);
+
+
+
 
 // app.get('/vendor',(req, res)=>{
 //   console.log("vendor called");
@@ -101,13 +102,17 @@ app.post('/purchasedetail', (req,res)=>{
         db.exec(`Insert into Purchase_Book (vendor_id, item_id, quantity, bill_amount, paid_amount, date, bill_number, delivery_status, delivery_quantity) values (${request.name.id},${request.item.id},${Number(request.quantity)},${Number(request.bill_amount)}, ${Number(request.paid_amount)},"${request.date}", "${request.bill_number}", "${request.delivery_status}", ${Number(request.delivery_quantity)});`,(err)=>{
             if (err===null){
               console.log("Success!");
+              db.get(`SELECT id, total_purchased, available FROM Raw_Material_StockBook WHERE item_id=${request.item.id}`, (err, itemdetails)=>{
+                let updatedTotal = Number(request.quantity) + Number(itemdetails.total_purchased);
+                let updatedAvailable = Number(request.quantity) + Number(itemdetails.available);
+                db.exec(`UPDATE Raw_Material_StockBook SET total_purchased= ${updatedTotal}, available=${updatedAvailable} WHERE id=${itemdetails.id}`)
+              })
               res.send('Saved!')
             } else {
               res.send('Failed')
               console.log("Failed: " + err)
             }
         });
-
       });
     });
   })
@@ -133,7 +138,7 @@ app.get('/vendorlist', (req,res)=>{
 app.post('/vendordetail', (req,res)=>{
   let request = req.body;
   db.exec(`INSERT INTO Vendor_Details (name, owner_name, address, email, pan_number, phone_number, gst_number) VALUES ("${request.name}", "${request.owner_name}", "${request.address}"," ${request.email}", "${request.pan_number}", ${Number(request.phone_number)}, "${request.gst_number}")`, (err)=>{
-    if (err===null){
+    if (err === null){
       console.log("Success!");
     } else {
       console.log("Failed: " + err)
@@ -141,19 +146,33 @@ app.post('/vendordetail', (req,res)=>{
   })
 })
 
-app.get('/itemlist', (req,res)=>{
-  let data = [];
-  db.serialize(() => {
-    db.each(`SELECT id, name from Item;`, (err, details) => {
-      if (err) {
-        console.error(err.message);
+app.post('/itemtable', (req,res)=>{
+  let request = req.body;
+
+  if(request.name=== ''){
+    res.send({Error: 'Invalid Item Name'})
+  } else {
+    let query = `INSERT INTO Item (name, remarks) VALUES ("${request.name}", "${request.remarks}");`
+    db.exec(query, (err)=>{
+      if (err===null){
+        console.log("Success!");
+        res.send({RES: "Success"});
+        let id;
+        db.get(`SELECT id FROM Item WHERE name="${request.name}" AND remarks="${request.remarks}"`, (err, itemid)=>{
+          console.log(itemid);
+          id = itemid.id;
+          db.exec(`INSERT INTO Raw_Material_StockBook (item_id, total_purchased, available) VALUES (${Number(id)}, ${0}, ${0})`, (err)=>{
+            if (err){
+              console.log(err);
+            }
+          })
+        })
+        
+      } else {
+        console.log("Failed: " + err)
       }
-      console.log(details);
-      data.push(details);  
-    }, ()=>{
-      res.send(JSON.stringify(data))
-    });
-  });
+    })
+  }
 })
 
 app.get('/purchaselist', (req,res)=>{

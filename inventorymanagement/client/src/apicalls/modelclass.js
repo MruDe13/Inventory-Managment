@@ -39,7 +39,7 @@ export class Raw_Material_StockBook {
 export class Item {
     constructor(){
         this.name = "";
-        this.remakrs = "";
+        this.remarks = "";
     }
 }
 

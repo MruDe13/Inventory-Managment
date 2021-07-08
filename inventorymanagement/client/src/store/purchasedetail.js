@@ -1,8 +1,8 @@
-import InventoryDetails from "../apicalls/fetchstore";
+import GetInventoryDetails from "../apicalls/fetchstore";
 import { edits } from "./edits";
 
 async function PurchaseDetail(){
-    let purchaseList = await InventoryDetails('purchaselist');
+    let purchaseList = await GetInventoryDetails('purchasetable');
 
     console.log(purchaseList);
 
@@ -12,4 +12,3 @@ async function PurchaseDetail(){
 }
 
 export default PurchaseDetail;
-

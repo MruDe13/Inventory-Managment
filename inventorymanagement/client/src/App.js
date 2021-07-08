@@ -1,9 +1,9 @@
 import './App.css';
 import NavBar from './view/navbar';
-import Customer from './view/customer';
+import Customer from './view/stock';
 import Vendor from './view/vendor';
 import { Switch, Route , Link} from 'react-router-dom';
-import NewEntry from './view/newentry';
+import NewEntry from './view/EntryView/newentry';
 import Modal from './minorcomponents/modal';
 import {useState} from 'react';
 import PurchaseDetails from './view/purchasedetail';
@@ -50,7 +50,7 @@ function App() {
               <Route path='/PURCHASE'>
                 <PurchaseDetails changeDialogStatus={changeDialogStatus}/> 
               </Route>
-              <Route path='/CUSTOMER'>
+              <Route path='/STOCK'>
                 <Customer changeDialogStatus={changeDialogStatus}/>
               </Route>
               <Route path='/VENDOR'>

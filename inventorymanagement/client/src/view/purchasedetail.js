@@ -7,7 +7,7 @@ function PurchaseDetails(props){
     let [purchaseList, setPurchaseList] = useState([]);
     edits["setPurchaseList"] = setPurchaseList;
     edits["purchaseList"] = purchaseList;
-    console.log(typeof purchaseList);
+
     if (purchaseList.length === 0){
         return(
             <div> PURCHASE LIST IS EMPTY </div>
