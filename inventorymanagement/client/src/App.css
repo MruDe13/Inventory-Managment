@@ -1,0 +1,168 @@
+.App {
+  text-align: center;
+}
+
+.AppName {
+  background-color: aquamarine;
+  padding: 20px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+  border: 1px solid black;
+}
+
+.AppBody {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.NavBar {
+  height: 100vh;
+  box-sizing: content-box;
+  border: 1px solid black;
+  background-color: aquamarine;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.NavList {
+  list-style: none;
+  width: inherit;
+  margin-left: inherit;
+  margin-right: inherit;
+  padding: 0%;
+  margin-top: 0;
+}
+
+.NavItems {
+  width: 100%;
+  height: 10vh;
+  display: grid;
+  align-items: center;
+  margin: auto;
+  border-bottom: 1px solid black;
+}
+
+.NavItems:hover{
+  color: whitesmoke;
+  background-color: teal;
+  cursor: pointer;
+}
+
+.ListContent {
+  height: 100vh;
+  display: grid;
+}
+
+.NewEntry {
+  background-color: aquamarine;
+  display: grid;
+  grid-template-rows: 5rem auto;
+}
+
+.SelectList {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.EntryBox {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.EntryBoxView {
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto;
+}
+
+.EntryBoxComponent{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 1rem 2rem 1rem 1rem;
+}
+.hide{
+  display: none;
+}
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th{
+  border: 1px solid black;
+  margin: inherit;
+  background-color: gray;
+  padding: 0.5rem;
+  font-size: 10px;
+}
+
+
+
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  margin: inherit;
+}
+
+
+
+.EntryBoxTwo {
+  display: flex;
+  height: 100%;
+}
+
+.EntryDetails {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.CustomerDetails {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.GoodsDetails {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;}
+
+
+.ModalHide {
+  display: none;
+}
+
+.ModalShow {
+  display: block;
+  position: absolute;
+  height: 200vh;
+  width: 100%;
+  z-index: 2000;
+  background-color: black ;
+  opacity: 95%;
+}
+
+.ModalContent {
+  margin:50px;
+  background-color: aquamarine;
+}
+
+.ModalTable {
+  margin-bottom: 50px;
+}
+
+.btn-green {
+  margin: 1rem;
+  background-color: green;
+}
+
+.btn-red {
+  margin: 1rem;
+  background-color: red;
+}
