@@ -1,4 +1,4 @@
-function Confirmation(props){
+function ConfirmationBox(props){
     
     function clickHandler(event){
         return (event.target.value)
@@ -16,3 +16,5 @@ function Confirmation(props){
         </section>
     )
 }
+
+export default ConfirmationBox;

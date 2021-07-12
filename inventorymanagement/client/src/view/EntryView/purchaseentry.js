@@ -28,7 +28,7 @@ function PurchaseEntry(){
         console.log(formView);
         setLoading(true);
         
-        PostInventoryDetails('purchasedetail', formView).then(()=>{
+        PostInventoryDetails('purchasetable', formView).then(()=>{
             setLoading(false);
         }).catch(()=>{
             setLoading(false);

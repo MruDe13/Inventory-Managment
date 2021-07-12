@@ -8,6 +8,25 @@ function PurchaseDetails(props){
     edits["setPurchaseList"] = setPurchaseList;
     edits["purchaseList"] = purchaseList;
 
+    function onRowEdit(index){
+        console.log("onPurchaseEdit at index " + index);
+        const editData = {...purchaseList[index]};
+
+        function onSave(){
+            purchaseList[index] = editData;
+            console.log("onSave")
+        }
+        function onCancel(){
+            console.log("Fuck off!");
+        }
+
+        props.changeDialogStatus({
+            editData:editData,
+            onSave: onSave,
+            onCancel: onCancel
+        });
+    }
+
     if (purchaseList.length === 0){
         return(
             <div> PURCHASE LIST IS EMPTY </div>
@@ -16,7 +35,7 @@ function PurchaseDetails(props){
 
     return(
         <div>
-           <DrawTable Table={purchaseList} editable={true} changeDialogStatus={props.changeDialogStatus} />
+           <DrawTable Table={purchaseList} editable={true} onClick={onRowEdit} />
            
         </div>
     )
