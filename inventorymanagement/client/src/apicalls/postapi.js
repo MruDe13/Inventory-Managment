@@ -11,19 +11,10 @@ async function PostInventoryDetails(path, data){
     let dataResponse = await response.json();
 
     console.log(dataResponse)
-    
-    if (dataResponse.Error !== undefined){
-        alert('Saved');
-    } else {
-        alert(dataResponse.Error);
-    }
+    alert(dataResponse["Response"]);
     
     return dataResponse;
 }
 
 export default PostInventoryDetails;
-
-
-
-
 

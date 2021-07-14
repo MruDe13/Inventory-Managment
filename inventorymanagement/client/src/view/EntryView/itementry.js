@@ -25,18 +25,25 @@ function ItemEntry(){
     function clickHandler(){
         console.log(formView);
         setLoading(true);
+        let confirmation = window.confirm('Do you want to proceed?');
+
+        if(confirmation){
+            PostInventoryDetails('itemtable', formView).then(()=>{
+                setLoading(false);
+            }).catch(()=>{
+                setLoading(false);
+            });
+        } else {
+            alert("Operation Canceled!");
+            setLoading(false);
+        }
         
-        PostInventoryDetails('itemtable', formView).then(()=>{
-            setLoading(false);
-        }).catch(()=>{
-            setLoading(false);
-        });
     }
 
     function isLoading(){
         return loading;
     }
-    let tempDisplay = !isLoading() ? '' : 'hide';
+    let tempDisplay = !isLoading() ? 'EntryBox' : 'hide';
 
 
     return(

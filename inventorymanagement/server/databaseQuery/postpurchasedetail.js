@@ -1,17 +1,18 @@
 const DB = require('../dbConnection');
+const deleteLastPurchase = require('./deletelastpurchase');
 
 async function postPurchasetDetail(request){
     let db = DB.getDbConnection();
     let query = `Select id from Vendor_Details where name="${request.name}"`;
     let response = new Promise((res, rej)=>{
         db.get(query,(err, vendor_id )=>{
-            if (err){
+            if (err || itemdetails===undefined){
                 return rej("Vendor not registered.")
             }
             request.name = vendor_id;
             let query2 = `Select id from Item where name="${request.item}"`;
             db.get(query2,(err, item_id )=>{
-                if (err){
+                if (err || itemdetails===undefined){
                     return rej("Item not registered.")
                 }
 
@@ -24,9 +25,11 @@ async function postPurchasetDetail(request){
                     let query4 = `SELECT id, total_purchased, available FROM Raw_Material_StockBook WHERE item_id=${request.item.id}`; 
 
                     db.get(query4, (err, itemdetails)=>{
-                        if(err){
-                            return rej(JSON.stringify(err))
+                        if(err || itemdetails===undefined){
+                            deleteLastPurchase.deleteLastPurchase(db)
+                            return rej("Item not found.")
                         }
+                        console.log(itemdetails)
 
                         let updatedTotal = Number(request.quantity) + Number(itemdetails.total_purchased);
                         let updatedAvailable = Number(request.quantity) + Number(itemdetails.available);
@@ -34,7 +37,7 @@ async function postPurchasetDetail(request){
 
                         db.exec(query5, (err)=>{
                             if (err){
-                                return rej(JSON.stringify(err));
+                                return rej("Couldn't update Stockbook!");
                             }
                             res("Successfully Saved!")
                         })

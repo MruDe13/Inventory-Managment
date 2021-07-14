@@ -16,9 +16,10 @@ route.post('/', (req,res)=>{
     let request = req.body;
     postPurchasetDetail.postPurchasetDetail(request).then((data)=>{
       console.log(data);
-      res.send(data);
+      res.status(200).send({"Response":data})
     }).catch((err)=>{
       console.log(err);
+      res.status(400).send({"Response": err})
     })
 })
 

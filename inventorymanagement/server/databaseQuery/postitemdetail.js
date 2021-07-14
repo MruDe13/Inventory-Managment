@@ -11,7 +11,7 @@ async function postItemDetail(request){
 
             let query2 = `SELECT id FROM Item WHERE name="${request.name}" AND remarks="${request.remarks}"`;
             db.get( query2, (err, itemid)=>{
-                if (err){
+                if (err || itemid===undefined){
                     return rej(JSON.stringify(err))
                 }
 

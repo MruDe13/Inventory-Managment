@@ -20,11 +20,6 @@ function App() {
       setShow(true);
   }
 
-  function closeDialog(){
-      setShow(false)
-  }
-
-
   return (
     <div className="App">
       <h1 className='AppName'>

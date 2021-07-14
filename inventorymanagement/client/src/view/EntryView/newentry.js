@@ -10,7 +10,6 @@ function NewEntry() {
         setTransaction(event.target.value);
     }
 
-
     return(
         <div className='NewEntry'>
             <div className='EntryDetails'>

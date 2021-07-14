@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { VendorDetails } from '../../apicalls/modelclass';
 import PostInventoryDetails from '../../apicalls/postapi';
+import LoadingIndicator from '../../minorcomponents/loadingIndicator';
 
 
 function VendorEntry(){
 
     let [formView, setFormView] = useState(new VendorDetails());
+    let [loading, setLoading] = useState(false);
+
     let keys = Object.keys(formView);
     console.log(keys);
 
@@ -21,19 +24,29 @@ function VendorEntry(){
     }
 
     function clickHandler(){
+        setLoading(true);
         let confirmation = window.confirm('Do you want to proceed?');
         if (confirmation){
-            PostInventoryDetails('vendortable', formView);
+            PostInventoryDetails('vendortable', formView).then(()=>{
+                setLoading(false);
+            }).catch(()=>{
+                setLoading(false);
+            })
         } else {
-            alert('Cancelled!')  
+            alert('Cancelled!');
+            setLoading(false);
         }
-        
-        
     }
+    
+    function isLoading(){
+        return loading;
+    }
+    let tempDisplay = !isLoading() ? '' : 'hide';
 
     return(
         <div>
-            <div onChange={changeHandler}>
+        <div className={tempDisplay}>
+            <div className='EntryBox' onChange={changeHandler}>
                 <section>
                     <label>Vendor : </label>
                     <input placeholder='Enter name..' id='name'/>
@@ -55,6 +68,9 @@ function VendorEntry(){
                 </section>
                 
             </div>
+            
+        </div>
+            <LoadingIndicator isLoading={isLoading}/>
         </div>
     )
 }

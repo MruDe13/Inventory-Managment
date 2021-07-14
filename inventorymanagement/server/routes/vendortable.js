@@ -15,9 +15,10 @@ route.get('/', (req, res)=>{
 route.post('/', (req,res)=>{
   let request = req.body;
   postVendorDetail.postVendorDetail(request).then((data)=>{
-    res.send(data);
+    res.status(200).send({"Response":data})
   }).catch((err)=>{
     console.log(err);
+    res.status(400).send({"Response": err})
   })
 })
 
