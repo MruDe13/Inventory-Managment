@@ -1,4 +1,4 @@
-//const server = require('../../server/index');
+const server = require('../../server/index');
 const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
