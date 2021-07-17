@@ -1,4 +1,4 @@
 module.exports = {
     MODE: 'TEST',
-    DBNAME: "D:\\Database\\SQlite\\InventoryManagement.db"
+    DBNAME: "D:\\Projects\\Inventory-Managment\\inventorymanagement\\database\\InventoryManagement.db"
 }
