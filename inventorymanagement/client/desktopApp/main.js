@@ -1,11 +1,10 @@
-const server = require('../../server/index');
+//const server = require('../../server/index');
 const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
   protocol = electron.protocol;
    
 const path = require('path');
-
 const url = require('url'); 
 const isDev = true;
 
@@ -21,7 +20,7 @@ const createWindow = () => {
   });
   
   //const appUrl = 'http://localhost:3000'
-  const appUrl = `${path.join(__dirname, '../build/index.html')}`;
+  const appUrl = `${path.join(__dirname, '../../build/index.html')}`;
   
   console.log(appUrl);
   mainWindow.loadURL(appUrl);
