@@ -1,12 +1,17 @@
 import { edits } from "../store/edits";
-import '../App.css'
+import '../App.css';
 import DrawTable from "../minorcomponents/tables";
 import { useState } from 'react';
+import onRowEdit from "./rowedit";
 
 function PurchaseDetails(props){
     let [purchaseList, setPurchaseList] = useState([]);
     edits["setPurchaseList"] = setPurchaseList;
     edits["purchaseList"] = purchaseList;
+
+    function Edit(index){
+        onRowEdit(index, purchaseList, props.changeDialogStatus)
+    }
 
     if (purchaseList.length === 0){
         return(
@@ -16,8 +21,7 @@ function PurchaseDetails(props){
 
     return(
         <div>
-           <DrawTable Table={purchaseList} editable={true} changeDialogStatus={props.changeDialogStatus} />
-           
+           <DrawTable Table={purchaseList} editable={true} onClick={Edit} />   
         </div>
     )
 }

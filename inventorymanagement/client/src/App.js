@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './view/navbar';
-import Customer from './view/stock';
+import StockDetails from './view/stock';
 import Vendor from './view/vendor';
 import { Switch, Route , Link} from 'react-router-dom';
 import NewEntry from './view/EntryView/newentry';
@@ -12,18 +12,13 @@ import PurchaseDetails from './view/purchasedetail';
 function App() {
 
   let [show, setShow] = useState(false);
-  let [index, setIndex] = useState(-1);
+  let [modalData, setModalData] = useState({});
 
-  function changeDialogStatus(indexValue){
-      console.log("Change dialog status" + indexValue);
-      setIndex(indexValue);
+  function changeDialogStatus(dialogData){
+      console.log("Change dialog status" + JSON.stringify(dialogData));
+      setModalData(dialogData);
       setShow(true);
   }
-
-  function closeDialog(){
-      setShow(false)
-  }
-
 
   return (
     <div className="App">
@@ -51,14 +46,14 @@ function App() {
                 <PurchaseDetails changeDialogStatus={changeDialogStatus}/> 
               </Route>
               <Route path='/STOCK'>
-                <Customer changeDialogStatus={changeDialogStatus}/>
+                <StockDetails changeDialogStatus={changeDialogStatus}/>
               </Route>
               <Route path='/VENDOR'>
                 <Vendor changeDialogStatus={changeDialogStatus}/>
               </Route>
             </Switch>
         </div>
-          <Modal show={show} index={index} closeDialog={closeDialog} />
+          <Modal show={show} modalData={modalData} setShow={setShow} />
       </div>
     </div>
   );

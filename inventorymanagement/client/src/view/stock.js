@@ -2,6 +2,7 @@ import DrawTable from "../minorcomponents/tables";
 import { useState } from 'react';
 import { edits } from "../store/edits";
 import DailyBook from "./dailybook";
+import onRowEdit from "./rowedit";
 
 function  StockDetails(props){
 
@@ -17,10 +18,14 @@ function  StockDetails(props){
         )
     }
 
+    function Edit(index){
+        onRowEdit(index, stockList, props.changeDialogStatus)
+    }
+
     return (
         <div>
             <div>
-                <DrawTable Table={stockList} editable={true} changeDialogStatus={props.changeDialogStatus}/>
+                <DrawTable Table={stockList} editable={true} onClick={Edit}/>
             </div>
             <div style={{marginTop:'3%'}}>
                 <button> USE </button>

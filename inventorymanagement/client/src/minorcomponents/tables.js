@@ -5,7 +5,7 @@ import {useState} from 'react';
 
 function DrawTable(props){
 
-    if (props.Table === null || undefined){
+    if (props.Table === null){
         return null;
     }
 
@@ -15,13 +15,11 @@ function DrawTable(props){
         return index;
     }
 
-
-
     return (
         <div>
             <table>
             <TableHeader header={header}/>
-            <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} changeDialogStatus={props.changeDialogStatus}/>
+            <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} onClick={props.onClick}/>
             </table>
         </div>
     )
@@ -47,7 +45,7 @@ function TableRow(props) {
             
             return (
                 <tr >
-                    <TableData rowValue={rowValue} editable={props.editable} changeDialogStatus={props.changeDialogStatus} index={index} table={props.table}/>
+                    <TableData rowValue={rowValue} editable={props.editable} onClick={props.onClick} index={index} table={props.table}/>
                 </tr>
             )
         })
@@ -57,13 +55,10 @@ function TableRow(props) {
 
 function TableData(props){
 
-    function clickHandler(index){
-        props.changeDialogStatus(index);
-    }
     let values = Object.values(props.rowValue);
 
     if (props.editable){
-        values.push(<button onClick={()=>{clickHandler(props.index)}}>Edit</button>)
+        values.push(<button onClick={()=>{props.onClick(props.index)}}>Edit</button>)
     }
 
     return (    

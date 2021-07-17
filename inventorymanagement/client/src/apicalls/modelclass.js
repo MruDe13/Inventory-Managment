@@ -7,15 +7,12 @@ export class VendorDetails {
         this.email = null;
         this.pan_number = null;
         this.gst_number = null;
-        // Object.seal(this);
     }
 
 }
 
 export class Purchase_Book {
     constructor(){
-        // this.vendor_id = 0;
-        // this.item_id = 0;
         this.name="";
         this.item="";
         this.quantity = 0;
