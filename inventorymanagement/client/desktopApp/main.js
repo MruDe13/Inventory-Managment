@@ -2,46 +2,70 @@ const server = require('../../server/index');
 const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
-  protocol = electron.protocol;
+  protocol = electron.protocol,
+  menu = electron.Menu;
    
 const path = require('path');
 const url = require('url'); 
-const isDev = true;
+const isDev = !app.isPackaged;  // are we in development mode or production.
 
-let mainWindow;
-   
-const createWindow = () => {
-  mainWindow = new BrowserWindow({ 
+let mainBrowserWindow;
+
+function sleep(inteval){
+  return new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+      resolve("Success");
+    }, inteval);
+  });
+}
+const createWindow = (splashWindow) => {
+  mainBrowserWindow = new BrowserWindow({ 
       width: 480,
       height: 320,
+      titleBarStyle: 'hidden',
+      show: false,
       webPreferences: {
         nodeIntegration: true,
       }
   });
-  
-  //const appUrl = 'http://localhost:3000'
+
   const appUrl = `${path.join(__dirname, '../../build/index.html')}`;
+  mainBrowserWindow.loadURL(appUrl);
+  mainBrowserWindow.once('ready-to-show', () => {
+    splashWindow.destroy();
+    mainBrowserWindow.maximize();
+    mainBrowserWindow.show();
+  });
+
+  if (isDev){
+    mainBrowserWindow.webContents.openDevTools();
+  }else{
+    menu.setApplicationMenu(null);
+  }
   
-  console.log(appUrl);
-  mainWindow.loadURL(appUrl);
-  mainWindow.maximize()
-  mainWindow.setFullScreen(true)
-  mainWindow.on('closed', () => mainWindow = null)
+  mainBrowserWindow.on('closed', () => mainBrowserWindow = null)
+}
+
+const createSplashWindow = () => {
+  splashWindow = new BrowserWindow({
+    width: 480, 
+    height: 320,
+    transparent: false,
+    frame: false,
+    alwaysOnTop: true
+  });
+  const splashUrl = `${path.join(__dirname, '../public/splash/splash.html')}`;
+  splashWindow.loadURL(splashUrl);
+  return splashWindow;
 }
 
 app.on('ready', () => {
-    // protocol.interceptFileProtocol('file', (request, callback) => {
-    //     console.log("File protocol handler");
-    //     if(request.url.indexOf('index') === -1){
-    //         const url = request.url.substr(7);
-    //         const finalPath = path.normalize(`${__dirname}/${url}`);
-    //         console.log(finalPath);
-    //         callback(finalPath);    
-    //     }
-    //     callback(request.url);  
-    // })
-      createWindow();
-  })
+  const splashWindow = createSplashWindow(); 
+  sleep(5000).then(()=>{
+    createWindow(splashWindow);
+  });
+  
+});
 
 app.on('window-all-closed', () => {
   // Follow OS convention on whether to quit app when
@@ -51,5 +75,5 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // If the app is still open, but no windows are open,
   // create one when the app comes into focus.
-  if (mainWindow === null) { createWindow() }
+  if (mainBrowserWindow === null) { createWindow() }
 })
