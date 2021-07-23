@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Item } from '../../apicalls/modelclass';
-import PostInventoryDetails from '../../apicalls/postapi';
-import LoadingIndicator from '../../minorcomponents/loadingIndicator';
+import { Item } from '../../../../../../apicalls/modelclass';
+import PostInventoryDetails from '../../../../../../apicalls/postapi';
+import LoadingIndicator from '../../../../../../minorcomponents/loadingIndicator';
 
 function ItemEntry(){
     let [formView, setFormView] = useState(new Item());

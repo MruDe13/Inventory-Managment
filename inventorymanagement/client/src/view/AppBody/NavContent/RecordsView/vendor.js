@@ -1,13 +1,14 @@
-import DrawTable from '../minorcomponents/tables';
-import {useState , useEffect} from 'react';
-import { edits } from "../store/edits";
+import DrawTable from '../../../../minorcomponents/tables';
+import {useState } from 'react';
+import { edits } from "../../../../store/edits";
+import '../../../../App.css';
 
-
-function Vendor(props){
+function Vendor(){
     let [vendorList, setVendorList] = useState([]);
 
     edits['setVendorList'] = setVendorList;
     edits['vendorList'] = vendorList;
+
     
     if (vendorList.length === 0){
         return (
@@ -18,7 +19,7 @@ function Vendor(props){
     return (
         <div>
             <div>
-            <DrawTable Table={vendorList} editable={false} changeDialogStatus={props.changeDialogStatus}/>
+            <DrawTable Table={vendorList} editable={false} />
             </div>
         </div>
     )

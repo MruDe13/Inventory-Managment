@@ -1,16 +1,19 @@
-import { edits } from "../store/edits";
-import '../App.css';
-import DrawTable from "../minorcomponents/tables";
-import { useState } from 'react';
-import onRowEdit from "./rowedit";
+import { edits } from "../../../../store/edits";
+import DrawTable from "../../../../minorcomponents/tables";
+import { useState, useContext } from 'react';
+import onRowEdit from "../../../rowedit";
+import { BodyContext } from '../../appbody';
+import '../../../../App.css';
 
-function PurchaseDetails(props){
+function PurchaseDetails(){
     let [purchaseList, setPurchaseList] = useState([]);
     edits["setPurchaseList"] = setPurchaseList;
     edits["purchaseList"] = purchaseList;
+    let {changeDialogStatus} = useContext(BodyContext);
+
 
     function Edit(index){
-        onRowEdit(index, purchaseList, props.changeDialogStatus)
+        onRowEdit(index, purchaseList, changeDialogStatus)
     }
 
     if (purchaseList.length === 0){

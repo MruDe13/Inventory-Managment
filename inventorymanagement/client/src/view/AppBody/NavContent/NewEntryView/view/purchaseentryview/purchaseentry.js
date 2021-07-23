@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Purchase_Book } from '../../apicalls/modelclass';
-import PostInventoryDetails from '../../apicalls/postapi';
-import LoadingIndicator from '../../minorcomponents/loadingIndicator';
+import { Purchase_Book } from '../../../../../../apicalls/modelclass';
+import PostInventoryDetails from '../../../../../../apicalls/postapi';
+import LoadingIndicator from '../../../../../../minorcomponents/loadingIndicator';
 import ItemList from './itemlist';
-import GetItemList from '../../store/itemlist';
+import GetItemList from '../../../../../../store/itemlist';
 
 function PurchaseEntry(){
 

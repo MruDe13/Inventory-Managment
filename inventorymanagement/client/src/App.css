@@ -3,7 +3,7 @@
 }
 
 .AppName {
-  background-color: aquamarine;
+  background-color: rgb(27, 154, 240);
   padding: 20px;
   margin-top: 0%;
   margin-bottom: 0%;
@@ -18,8 +18,7 @@
 .NavBar {
   height: 100vh;
   box-sizing: content-box;
-  border: 1px solid black;
-  background-color: aquamarine;
+  background-color: rgb(27, 154, 240);
   text-align: center;
   display: grid;
   grid-template-columns: auto;
@@ -38,16 +37,37 @@
   width: 100%;
   height: 10vh;
   display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
   margin: auto;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
+}
+
+.NavItems strong{
+  margin:auto;
+}
+
+.activeBG {
+  background-color: rgb(14, 228, 228);
+  color: black;
+  font-size: 20px;
+
+}
+
+.inactiveBG {
+  background-color: rgb(27, 154, 240);
+  color: white;
+  font-size: 15px;
 }
 
 .NavItems:hover{
   color: whitesmoke;
-  background-color: teal;
+  background-color: rgb(14, 228, 228);
+  color: black;
   cursor: pointer;
 }
+
+
 
 .ListContent {
   height: 100vh;
@@ -55,7 +75,7 @@
 }
 
 .NewEntry {
-  background-color: aquamarine;
+  background-color: rgb(14, 228, 228);
   display: grid;
   grid-template-rows: 5rem auto;
 }

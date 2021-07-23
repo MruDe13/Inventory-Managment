@@ -1,20 +1,18 @@
 import '../App.css';
-import updateStore from '../apicalls/updatestore';
-import { edits } from '../store/edits';
-import { currentStore } from '../apicalls/currentstate';
 import RedButton from './buttons/redbutton';
 import GreenButton from './buttons/greenbutton';
-import ConfirmationBox from './confirmation';
+import { BodyContext } from '../view/AppBody/appbody';
+import { useContext } from 'react';
 
 function Modal(props){
     
     console.log('Model Re-Rendered ' + props.editRowValue);
+    let {modalData, show, setShow} = useContext(BodyContext);
 
-    const modalDisplay = props.show ? 'ModalShow' : 'ModalHide' ;
-    const data = props.modalData.editData;
-    const onCancel = props.modalData.onCancel;
-    const onSave = props.modalData.onSave;
-    const setShow = props.setShow;
+    const modalDisplay = show ? 'ModalShow' : 'ModalHide' ;
+    const data = modalData.editData;
+    const onCancel = modalData.onCancel;
+    const onSave = modalData.onSave;
     
     function onSaveClick(){
         setShow(false);

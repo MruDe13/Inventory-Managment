@@ -1,6 +1,6 @@
-import '../../App.css';
+import '../../../../App.css';
 import { useState } from 'react';
-import TranscationBox from './transactionbox';
+import TranscationBox from './view/transactionbox';
 
 function NewEntry() {
 

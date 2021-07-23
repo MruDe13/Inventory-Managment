@@ -1,7 +1,7 @@
-import PurchaseEntry from "./purchaseentry";
-import SalesEntry from "./salesentry";
-import VendorEntry from "./vendorentry";
-import ItemEntry from "./itementry";
+import PurchaseEntry from "./purchaseentryview/purchaseentry";
+import SalesEntry from "./salesentryview/salesentry";
+import VendorEntry from "./vendorentryview/vendorentry";
+import ItemEntry from "./itementryview/itementry";
 
 function TranscationBox(props){
     if(props.entry === 'Purchase'){

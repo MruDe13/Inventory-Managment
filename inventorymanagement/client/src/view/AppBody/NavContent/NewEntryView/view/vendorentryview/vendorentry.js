@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { VendorDetails } from '../../apicalls/modelclass';
-import PostInventoryDetails from '../../apicalls/postapi';
-import LoadingIndicator from '../../minorcomponents/loadingIndicator';
+import { VendorDetails } from '../../../../../../apicalls/modelclass';
+import PostInventoryDetails from '../../../../../../apicalls/postapi';
+import LoadingIndicator from '../../../../../../minorcomponents/loadingIndicator';
 
 
 function VendorEntry(){

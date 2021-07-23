@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { edits } from "../../store/edits";
+import { edits } from "../../../../../../store/edits";
 
 function ItemList(){
     let [itemList, setItemList] = useState([]);
