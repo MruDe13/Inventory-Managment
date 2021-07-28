@@ -7,7 +7,7 @@ const postItemDetail = require('../databaseQuery/postitemdetail');
 
 route.get('/', (req, res)=>{
   getItemList.getItemList().then((data)=>{
-    res.send(data);
+    res.status(200).send(data);
   }).catch((err)=>{
     console.log(err)
   })

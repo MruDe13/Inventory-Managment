@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Item } from '../../../../../../apicalls/modelclass';
-import PostInventoryDetails from '../../../../../../apicalls/postapi';
+import PostInventoryDetails from '../../../../../../apicalls/makepostapi';
 import LoadingIndicator from '../../../../../../minorcomponents/loadingIndicator';
+import { TextBox , Button} from '../../../../../../sharedcomponents/textbox';
 
 function ItemEntry(){
     let [formView, setFormView] = useState(new Item());
@@ -13,6 +14,7 @@ function ItemEntry(){
 
     function changeHandler(event){
         let id = event.target.id;
+        console.log(id);
         let i;
         for (i in keys){
             if (keys[i] === id){
@@ -43,26 +45,19 @@ function ItemEntry(){
     function isLoading(){
         return loading;
     }
-    let tempDisplay = !isLoading() ? 'EntryBox' : 'hide';
+    let tempDisplay = !isLoading() ? 'NewEntryBox' : 'hide';
 
 
     return(
         <div>
-            <div className={tempDisplay}>    
-                <section onChange={changeHandler}>
-                    <div>
-                        <label>Item Name: </label>
-                        <input id='name'/>
-
-                        <label>Remarks</label>
-                        <input id='remarks'/>
+            <div className={tempDisplay} onChange={changeHandler}>    
+                    <div className="NewEntryBoxField">
+                        <TextBox type="text" label="Item Name*" id="name"/>
+                        <TextBox type="text" label="Remarks" id="remarks"/>
                     </div>
-                </section>
-                <section>
-                    <div>
-                        <button onClick={clickHandler}> Submit </button>
-                    </div>
-                </section>
+                    <div className="button-Submit">
+                        <Button buttonText="Submit" onClick={clickHandler}/>
+                    </div>     
             </div>
             <LoadingIndicator isLoading={isLoading}/>
         </div>

@@ -1,4 +1,4 @@
-import PostInventoryDetails from "../apicalls/postapi";
+import PostInventoryDetails from "../apicalls/makepostapi";
 
 function onRowEdit(index, table, changeDialogStatus){
     console.log("onEdit at index " + index);

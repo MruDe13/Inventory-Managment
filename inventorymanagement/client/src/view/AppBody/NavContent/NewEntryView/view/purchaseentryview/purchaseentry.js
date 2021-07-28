@@ -1,27 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Purchase_Book } from '../../../../../../apicalls/modelclass';
-import PostInventoryDetails from '../../../../../../apicalls/postapi';
+import PostInventoryDetails from '../../../../../../apicalls/makepostapi';
 import LoadingIndicator from '../../../../../../minorcomponents/loadingIndicator';
-import ItemList from './itemlist';
 import GetItemList from '../../../../../../store/itemlist';
+import "../../newentry.css";
+import { TextBox , SelectBox, Button} from '../../../../../../sharedcomponents/textbox';
+import { store } from '../../../../../../store/context';
 
-function PurchaseEntry(){
+function  PurchaseEntry(){
 
     let [formView, setFormView] = useState(new Purchase_Book());
     let [loading, setLoading] = useState(false);
-
+    let [itemList, setItemList] = useState([])
     let keys = Object.keys(formView);
-    console.log(keys);
-    GetItemList();
+
+    useEffect(()=>{
+        GetItemList().then(()=>{
+            setItemList([...store["itemList"]])
+        })
+    },[]);
+    
 
     function changeHandler(event){
         let id = event.target.id;
+        console.log(id);
         let i;
         for (i in keys){
             if (keys[i] === id){
                 formView[id] = event.target.value;
             }
         }
+        console.log(formView);
     }
 
     function clickHandler(){
@@ -48,53 +57,31 @@ function PurchaseEntry(){
     let tempDisplay = !isLoading() ? 'EntryBox' : 'hide';
     return(
         <div>
-            <div className={tempDisplay} onChange={changeHandler}>
-                <div className='EntryBoxView'>
-                    <div className='EntryBoxComponent'>
-                        <label>Vendor's Name : </label>
-                        <input placeholder="Enter name..." type='text' id='name'/>
+            <div className={tempDisplay}>
+                <div className='NewEntryBox' onChange={changeHandler}>
+                    <div className='NewEntryBoxField'>
+                        <TextBox type="text" label="Bill Number " id="bill_number"/>  
                     </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Item :</label>
-                        <ItemList/>
+                    <div className='NewEntryBoxField'>
+                        <TextBox type="text" label="Name Required*" id="name"/>
+                        <TextBox type="number" label="Quantity*" id="quantity"/>
                     </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Quantity: </label>
-                        <input type='number' id='quantity'/>
+                    <div className='NewEntryBoxField'>
+                        <TextBox type="number" label="Bill Amount*" id="bill_amount"/>
+                        <TextBox type="number" label="Paid Amount" id="paid_amount"/>
                     </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Date: </label>
-                        <input type='date' id='date'/>
+                    <div className='NewEntryBoxField'>
+                        <TextBox type="date" label="Date" id="date"/>
+                        <TextBox type="number" label="Delivered Qt." id="delivery_quantity" />
                     </div>
-                    <div>
-                        <button onClick={clickHandler}> Submit </button>
-                    </div>
-                </div>
-                <div className='EntryBoxView'>
-                    <div className='EntryBoxComponent'>
-                        <label>Bill No. </label>
-                        <input id='bill_number'/>
-                    </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Bill Amount: </label>
-                        <input type='number' id='bill_amount'/>
-                    </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Paid Amount: </label>
-                        <input type='number' id='paid_amount'/>
-                    </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Delivery Status : </label>
-                        <select id='delivery_status'>
-                            <option value='Delivered'>Delivered</option>
-                            <option value='Not Delivered'>Not Delivered</option>
-                        </select>
-                    </div>
-                    <div className='EntryBoxComponent'>
-                        <label>Delivered Quantity : </label>
-                        <input type='number' id='delivery_quantity'/>
+                    <div className='NewEntryBoxField'>
+                        <SelectBox list={itemList} label="Item " id="item"/>
+                        <SelectBox list={["Delivered", "Not Delivered"]} label="Delivery Status" id="delivery_status"/>   
                     </div>
                 </div>
+                <div className="button-Submit">
+                    <Button buttonText="Submit" onClick={clickHandler}/>
+                </div>  
             </div>
             <LoadingIndicator isLoading={isLoading}/>
         </div>

@@ -1,22 +1,33 @@
 import { edits } from "../../../../store/edits";
 import DrawTable from "../../../../minorcomponents/tables";
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import onRowEdit from "../../../rowedit";
 import { BodyContext } from '../../appbody';
 import '../../../../App.css';
+import { store } from "../../../../store/context";
+import { PurchaseDetail as PurchaseAPI } from "../../../../store";
+
 
 function PurchaseDetails(){
-    let [purchaseList, setPurchaseList] = useState([]);
-    edits["setPurchaseList"] = setPurchaseList;
-    edits["purchaseList"] = purchaseList;
+    let purchaseList = [...store["purchaseList"]];
+    let [purchaseView, setPurchaseView] = useState([...purchaseList]);
     let {changeDialogStatus} = useContext(BodyContext);
 
+    function updatePurchaseView(){
+        setPurchaseView([...store["purchaseList"]])
+    }
+
+    edits["updatePurchaseView"] = updatePurchaseView;
 
     function Edit(index){
         onRowEdit(index, purchaseList, changeDialogStatus)
     }
 
-    if (purchaseList.length === 0){
+    useEffect(()=>{
+        PurchaseAPI();
+    },[])
+
+    if (purchaseView.length === 0){
         return(
             <div> PURCHASE LIST IS EMPTY </div>
         )
@@ -24,7 +35,7 @@ function PurchaseDetails(){
 
     return(
         <div>
-           <DrawTable Table={purchaseList} editable={true} onClick={Edit} />   
+           <DrawTable Table={purchaseView} editable={true} onClick={Edit} />   
         </div>
     )
 }

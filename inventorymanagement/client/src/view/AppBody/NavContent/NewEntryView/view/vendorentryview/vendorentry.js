@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { VendorDetails } from '../../../../../../apicalls/modelclass';
-import PostInventoryDetails from '../../../../../../apicalls/postapi';
+import PostInventoryDetails from '../../../../../../apicalls/makepostapi';
 import LoadingIndicator from '../../../../../../minorcomponents/loadingIndicator';
+import { TextBox, Button } from '../../../../../../sharedcomponents/textbox';
+import "../../newentry.css";
 
 
 function VendorEntry(){
@@ -45,31 +47,25 @@ function VendorEntry(){
 
     return(
         <div>
-        <div className={tempDisplay}>
-            <div className='EntryBox' onChange={changeHandler}>
-                <section>
-                    <label>Vendor : </label>
-                    <input placeholder='Enter name..' id='name'/>
-                    <label>Owner's Name :</label>
-                    <input id='owner_name'/>
-                    <label>Address : </label>
-                    <input id='address'/>
-                    <label> Pan No. :</label>
-                    <input id='pan_number'/>
-                </section>
-                <section>
-                    <label> Gst No. :</label>
-                    <input id='gst_number'/>
-                    <label>Phone no. :</label>
-                    <input id='phone_number'/>
-                    <label>Email :</label>
-                    <input id='email'/>
-                    <button onClick={clickHandler}>Submit</button>
-                </section>
-                
+            <div className={tempDisplay}>
+                <div className='NewEntryBox' onChange={changeHandler}>
+                    <div className="NewEntryBoxField">
+                        <TextBox type="text" label="Shop Name*" id="name"/>
+                        <TextBox type="text" label="Shop's Owner Name*" id="owner_name"/>
+                    </div>
+                    <div className="NewEntryBoxField">
+                        <TextBox type="text" label="Address*" id="address"/>
+                        <TextBox type="text" label="Pan Number" id="pan_number"/>
+                    </div>
+                    <div className="NewEntryBoxField">
+                        <TextBox type="number" label="Phone Number" id="phone_number"/>
+                        <TextBox type="email" label="Email Address" id="email"/>
+                    </div>
+                </div>
+                <div className="button-Submit">
+                        <Button buttonText="Submit" onClick={clickHandler}/>
+                </div>   
             </div>
-            
-        </div>
             <LoadingIndicator isLoading={isLoading}/>
         </div>
     )

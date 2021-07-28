@@ -1,4 +1,4 @@
-import '../App.css';
+import './table.css';
 import RedButton from './buttons/redbutton';
 import GreenButton from './buttons/greenbutton';
 import { BodyContext } from '../view/AppBody/appbody';
@@ -30,10 +30,8 @@ function Modal(props){
 
     return (
             <div className= {modalDisplay}>
-                <div className='ModalContent'>
-                    <div>
-                        <EditTable editRowValue={data}/>
-                    </div>
+                <div className='ModalContent'>  
+                    <EditTable editRowValue={data}/>
                     <div>
                         <GreenButton clickHandler={onSaveClick}/>
                         <RedButton closeDialog={onCancelClick}/>
@@ -48,15 +46,13 @@ function EditTable(props){
 
     let itemName = Object.keys(props.editRowValue);
     return(
-        <section className='ModalTable'>
-            <table>
-                <tr>
+            <table className='ModalTable'>
+                <tr className='tableHeader'>
                     <th> Items </th>
                     <th> New Value </th>
                 </tr>
                 <EditTableItems itemName={itemName} editRow={props.editRowValue}/>
             </table>
-        </section>
     )
 }
 

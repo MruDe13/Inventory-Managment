@@ -11,26 +11,14 @@ function NavBar(){
     let {active, changeNavBarActiveStatus} = useContext(BodyContext);
     
     function clickHandler(items){
-        let changeactive = {
+        let active = {
             'NEW ENTRY':false,
             'PURCHASE': false,
             'STOCK':false,
             'VENDOR':false};
 
-        changeactive[items] = true;
-        changeNavBarActiveStatus(changeactive)
-        edits.currentState = items;
-        if(edits.currentState === 'NEW ENTRY'){
-        }
-        if (edits.currentState ==='VENDOR'){
-            VendorDetails();
-        }
-        if (edits.currentState ==='PURCHASE'){
-            PurchaseDetail()
-        }
-        if (edits.currentState === 'STOCK'){
-            StockDetails()
-        }
+        active[items] = true;
+        changeNavBarActiveStatus(active)
     }
 
     return (
@@ -41,9 +29,8 @@ function NavBar(){
                         <li className={`NavItems ${active[items] ? 'activeBG': 'inactiveBG'}`}
                         value={items}
                         onClick={()=>{clickHandler(items)}}
-                        key={items}>
-                            <img src={icons[items]}/>
-                            <strong>{items}</strong>
+                        key={items}>  
+                        <span className="NavItem-Text"> <img className="NavItem-Icon" src={icons[items]}/><strong>{items}</strong></span>
                         </li>
                     </Link>  
                 )

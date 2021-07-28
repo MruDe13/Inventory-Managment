@@ -1,3 +1,8 @@
+#root {
+  min-height: 100vh;
+  display: grid;
+}
+
 .App {
   text-align: center;
 }
@@ -13,10 +18,11 @@
 .AppBody {
   display: grid;
   grid-template-columns: 20% 80%;
+  height: 100%;
 }
 
 .NavBar {
-  height: 100vh;
+  height: inherit;
   box-sizing: content-box;
   background-color: rgb(27, 154, 240);
   text-align: center;
@@ -36,46 +42,44 @@
 .NavItems {
   width: 100%;
   height: 10vh;
-  display: grid;
-  grid-template-columns: auto auto;
-  align-items: center;
-  margin: auto;
   border-bottom: 1px solid white;
 }
 
-.NavItems strong{
-  margin:auto;
-}
-
 .activeBG {
-  background-color: rgb(14, 228, 228);
-  color: black;
-  font-size: 20px;
-
+  background-color: rgb(100, 189, 248);
+  font-size: 25px;
+  color: white;
 }
 
 .inactiveBG {
   background-color: rgb(27, 154, 240);
-  color: white;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 .NavItems:hover{
   color: whitesmoke;
-  background-color: rgb(14, 228, 228);
-  color: black;
+  background-color: rgb(100, 189, 248);;
   cursor: pointer;
 }
 
+.NavItem-Icon{
+  margin-right: 10px;
+}
+
+.NavItem-Text{
+  display: flex;
+  padding-left: 3.5rem;
+  padding-top: 1.5rem;
+}
 
 
 .ListContent {
-  height: 100vh;
+  height: inherit;
   display: grid;
+  background-color: rgb(230, 242, 250)
 }
 
 .NewEntry {
-  background-color: rgb(14, 228, 228);
   display: grid;
   grid-template-rows: 5rem auto;
 }
@@ -86,61 +90,12 @@
   align-items: flex-start;
 }
 
-.EntryBox {
-  display: grid;
-  grid-template-columns: auto auto;
-}
 
-.EntryBoxView {
-  display: grid;
-  height: 100%;
-  grid-template-rows: auto;
-}
 
-.EntryBoxComponent{
-  display: grid;
-  grid-template-columns: auto auto;
-  margin: 1rem 2rem 1rem 1rem;
-}
 .hide{
   display: none;
 }
 
-table {
-  border: 1px solid black;
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 100%;
-}
-
-th{
-  border: 1px solid black;
-  margin: inherit;
-  background-color: gray;
-  padding: 0.5rem;
-  font-size: 10px;
-}
-
-
-
-td {
-  border: 1px solid black;
-  border-collapse: collapse;
-  text-align: center;
-  margin: inherit;
-}
-
-
-
-.EntryBoxTwo {
-  display: flex;
-  height: 100%;
-}
-
-.EntryDetails {
-  margin-top: 10px;
-  margin-left: 20px;
-}
 
 .CustomerDetails {
   margin-bottom: 20px;
@@ -161,21 +116,14 @@ td {
 .ModalShow {
   display: block;
   position: absolute;
-  height: 200vh;
+  height: 100%;
   width: 100%;
-  z-index: 2000;
+  z-index: 1000;
   background-color: black ;
   opacity: 95%;
+  align-items: center;
 }
 
-.ModalContent {
-  margin:50px;
-  background-color: aquamarine;
-}
-
-.ModalTable {
-  margin-bottom: 50px;
-}
 
 .btn-green {
   margin: 1rem;
@@ -186,3 +134,5 @@ td {
   margin: 1rem;
   background-color: red;
 }
+
+

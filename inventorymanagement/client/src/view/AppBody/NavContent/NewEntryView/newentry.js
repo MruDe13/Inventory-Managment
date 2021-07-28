@@ -1,25 +1,20 @@
-import '../../../../App.css';
+import "./newentry.css";
 import { useState } from 'react';
 import TranscationBox from './view/transactionbox';
+import { SelectBox } from "../../../../sharedcomponents/textbox";
 
 function NewEntry() {
 
     let [Transaction, setTransaction] = useState('Purchase');
-
+    let transactionType = ["Purchase", "Sale", "Vendor", "Item"]
     function changeHandler(event){
         setTransaction(event.target.value);
     }
 
     return(
         <div className='NewEntry'>
-            <div className='EntryDetails'>
-                <label>Transaction Type : </label>
-                <select name="SelectList" id='TRANSACTION' onChange={changeHandler}>
-                    <option  value='Purchase'> Purchase </option>
-                    <option  value='Sale'> Sales </option>
-                    <option  value='Vendor'> Vendor </option>
-                    <option value='Item'> Item </option>
-                </select>
+            <div className='Transaction-Type'>
+                <SelectBox list={transactionType} label="Transaction Type " onChange={changeHandler}/>
             </div>
             <div >
                 <TranscationBox entry={Transaction}/>

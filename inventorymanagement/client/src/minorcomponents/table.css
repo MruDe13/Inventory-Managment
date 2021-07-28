@@ -1,0 +1,38 @@
+.table{
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.tableHeaderRow{
+    background-color: rgb(191, 207, 243);
+}
+
+.tableHeaderData{
+    border-right: 1px solid black;
+    padding: 8px;
+}
+
+
+
+.tableRow:nth-child(even){
+    background-color: rgb(224, 230, 243);
+}
+
+.tableRow:hover{
+    background-color: rgb(236, 210, 236);
+}
+.tableData{
+    padding: 8px;
+}
+
+.ModalContent{
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgb(27, 154, 240);
+    width: 50%;
+}
+
+.ModalTable{
+    margin:auto;
+}

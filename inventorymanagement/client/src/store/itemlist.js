@@ -1,13 +1,20 @@
-import GetInventoryDetails from "../apicalls/fetchstore";
-import {edits} from './edits';
-
+import GetInventoryDetails from "../apicalls/makegetapi";
+import { store } from "../store/context"
 
 async function GetItemList(){
-    let itemList = await GetInventoryDetails('itemtable');
+    let response = new Promise((res,rej)=>{
+        GetInventoryDetails('itemtable')
+            .then((data)=>{res(data);
+                if (store["itemList"].length === 0){
+                    data.map((item)=>{
+                        store["itemList"].push(item.name)
+                        })
+                }  
+            })
+            .catch((err)=> {rej(err)})
+    })
 
-    edits.setItemList(itemList);
-
-    return itemList;
+    return response;
 }
 
 export default GetItemList;

@@ -1,4 +1,4 @@
-import GetInventoryDetails from "../apicalls/fetchstore";
+import GetInventoryDetails from "../apicalls/makegetapi";
 import {edits} from './edits';
 
 async function VendorDetails(){
