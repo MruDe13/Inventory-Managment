@@ -2,9 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "main": "./client/desktopApp/main.js",
   "homepage": "./",
-  "dependencies": {
-    "@material-ui/core": "^4.12.2",
+    "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -32,13 +32,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pack": "electron-builder --dir",
-    "predist": "npm run build",
-    "dist": "electron-builder",
     "preelectron-pack": "npm run build",
+    "pack": "electron-builder --dir",
+    "predist":"npm run build",
+    "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
     "electron": "electron .",
     "start-server": "nodemon ./server/index.js",
+    "startOver": "nodemon index.js",
     "test-server": "echo \"Error: no test specified\" && exit 1"
   },
   "build": {
