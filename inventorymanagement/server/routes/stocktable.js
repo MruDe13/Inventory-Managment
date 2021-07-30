@@ -4,7 +4,7 @@ const route = express.Router();
 
 route.get('/', (req, res)=>{
   getStockDetail.getStockDetail().then((data)=>{
-    res.send(data);
+    res.status(200).send(data);
   }).catch((err)=>{
     console.log(err)
   })

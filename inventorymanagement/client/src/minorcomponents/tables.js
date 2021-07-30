@@ -1,7 +1,4 @@
-import '../App.css';
-import Modal from './modal';
-import {useState} from 'react';
-
+import './table.css';
 
 function DrawTable(props){
 
@@ -16,12 +13,10 @@ function DrawTable(props){
     }
 
     return (
-        <div>
-            <table>
+        <table className="table">
             <TableHeader header={header}/>
             <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} onClick={props.onClick}/>
-            </table>
-        </div>
+        </table>
     )
 }
 
@@ -29,9 +24,9 @@ function DrawTable(props){
 function TableHeader(props) {
 
     return (
-        <tr>
+        <tr className='tableHeaderRow'>
             {props.header.map((headerName) => {
-                return <th>{headerName.toUpperCase()}</th>
+                return <th className="tableHeaderData">{headerName.toUpperCase()}</th>
             })}
         </tr>
     )
@@ -44,7 +39,7 @@ function TableRow(props) {
         props.table.map((rowValue, index) => {
             
             return (
-                <tr >
+                <tr className="tableRow" >
                     <TableData rowValue={rowValue} editable={props.editable} onClick={props.onClick} index={index} table={props.table}/>
                 </tr>
             )
@@ -63,7 +58,7 @@ function TableData(props){
 
     return (    
         values.map((rowData) => {
-            return <td >{rowData}</td>
+            return <td className="tableData">{rowData}</td>
         })
     )
 

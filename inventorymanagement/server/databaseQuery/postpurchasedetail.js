@@ -6,13 +6,13 @@ async function postPurchasetDetail(request){
     let query = `Select id from Vendor_Details where name="${request.name}"`;
     let response = new Promise((res, rej)=>{
         db.get(query,(err, vendor_id )=>{
-            if (err || itemdetails===undefined){
+            if (err || vendor_id === undefined){
                 return rej("Vendor not registered.")
             }
             request.name = vendor_id;
             let query2 = `Select id from Item where name="${request.item}"`;
             db.get(query2,(err, item_id )=>{
-                if (err || itemdetails===undefined){
+                if (err || item_id === undefined){
                     return rej("Item not registered.")
                 }
 
@@ -25,7 +25,7 @@ async function postPurchasetDetail(request){
                     let query4 = `SELECT id, total_purchased, available FROM Raw_Material_StockBook WHERE item_id=${request.item.id}`; 
 
                     db.get(query4, (err, itemdetails)=>{
-                        if(err || itemdetails===undefined){
+                        if(err || itemdetails ===undefined){
                             deleteLastPurchase.deleteLastPurchase(db)
                             return rej("Item not found.")
                         }

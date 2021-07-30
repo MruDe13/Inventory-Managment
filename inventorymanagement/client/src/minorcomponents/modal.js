@@ -1,20 +1,18 @@
-import '../App.css';
-import updateStore from '../apicalls/updatestore';
-import { edits } from '../store/edits';
-import { currentStore } from '../apicalls/currentstate';
+import './table.css';
 import RedButton from './buttons/redbutton';
 import GreenButton from './buttons/greenbutton';
-import ConfirmationBox from './confirmation';
+import { BodyContext } from '../view/AppBody/appbody';
+import { useContext } from 'react';
 
 function Modal(props){
     
     console.log('Model Re-Rendered ' + props.editRowValue);
+    let {modalData, show, setShow} = useContext(BodyContext);
 
-    const modalDisplay = props.show ? 'ModalShow' : 'ModalHide' ;
-    const data = props.modalData.editData;
-    const onCancel = props.modalData.onCancel;
-    const onSave = props.modalData.onSave;
-    const setShow = props.setShow;
+    const modalDisplay = show ? 'ModalShow' : 'ModalHide' ;
+    const data = modalData.editData;
+    const onCancel = modalData.onCancel;
+    const onSave = modalData.onSave;
     
     function onSaveClick(){
         setShow(false);
@@ -32,10 +30,8 @@ function Modal(props){
 
     return (
             <div className= {modalDisplay}>
-                <div className='ModalContent'>
-                    <div>
-                        <EditTable editRowValue={data}/>
-                    </div>
+                <div className='ModalContent'>  
+                    <EditTable editRowValue={data}/>
                     <div>
                         <GreenButton clickHandler={onSaveClick}/>
                         <RedButton closeDialog={onCancelClick}/>
@@ -50,15 +46,13 @@ function EditTable(props){
 
     let itemName = Object.keys(props.editRowValue);
     return(
-        <section className='ModalTable'>
-            <table>
-                <tr>
+            <table className='ModalTable'>
+                <tr className='tableHeader'>
                     <th> Items </th>
                     <th> New Value </th>
                 </tr>
                 <EditTableItems itemName={itemName} editRow={props.editRowValue}/>
             </table>
-        </section>
     )
 }
 
