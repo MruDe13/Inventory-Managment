@@ -1,3 +1,4 @@
+// This contains all the code to create electron app
 const server = require('../../server/index');
 const electron = require('electron'),
   app = electron.app,
