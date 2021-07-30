@@ -1,11 +1,8 @@
-import '../App.css';
-import Modal from './modal';
-import {useState} from 'react';
-
+import './table.css';
 
 function DrawTable(props){
 
-    if (props.Table === null || undefined){
+    if (props.Table === null){
         return null;
     }
 
@@ -15,15 +12,11 @@ function DrawTable(props){
         return index;
     }
 
-
-
     return (
-        <div>
-            <table>
+        <table className="table">
             <TableHeader header={header}/>
-            <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} changeDialogStatus={props.changeDialogStatus}/>
-            </table>
-        </div>
+            <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} onClick={props.onClick}/>
+        </table>
     )
 }
 
@@ -31,9 +24,9 @@ function DrawTable(props){
 function TableHeader(props) {
 
     return (
-        <tr>
+        <tr className='tableHeaderRow'>
             {props.header.map((headerName) => {
-                return <th>{headerName.toUpperCase()}</th>
+                return <th className="tableHeaderData">{headerName.toUpperCase()}</th>
             })}
         </tr>
     )
@@ -46,8 +39,8 @@ function TableRow(props) {
         props.table.map((rowValue, index) => {
             
             return (
-                <tr >
-                    <TableData rowValue={rowValue} editable={props.editable} changeDialogStatus={props.changeDialogStatus} index={index} table={props.table}/>
+                <tr className="tableRow" >
+                    <TableData rowValue={rowValue} editable={props.editable} onClick={props.onClick} index={index} table={props.table}/>
                 </tr>
             )
         })
@@ -57,18 +50,15 @@ function TableRow(props) {
 
 function TableData(props){
 
-    function clickHandler(index){
-        props.changeDialogStatus(index);
-    }
     let values = Object.values(props.rowValue);
 
     if (props.editable){
-        values.push(<button onClick={()=>{clickHandler(props.index)}}>Edit</button>)
+        values.push(<button onClick={()=>{props.onClick(props.index)}}>Edit</button>)
     }
 
     return (    
         values.map((rowData) => {
-            return <td >{rowData}</td>
+            return <td className="tableData">{rowData}</td>
         })
     )
 

@@ -1,12 +1,12 @@
-import GetInventoryDetails from "../apicalls/fetchstore";
+import GetInventoryDetails from "../apicalls/makegetapi";
+import { store } from "./context";
 import { edits } from "./edits";
 
 async function PurchaseDetail(){
     let purchaseList = await GetInventoryDetails('purchasetable');
+    store["purchaseList"] = [...purchaseList];  
 
-    console.log(purchaseList);
-
-    edits.setPurchaseList(purchaseList);
+    edits.updatePurchaseView();
 
     return purchaseList;
 }

@@ -1,38 +1,43 @@
 const express = require('express');
+const checkVendorField = require('../checkinputs/checkVendor/checkvendorfield');
+const checkVendorDuplicate = require('../databaseQuery/checkvendorduplicate');
 const route = express.Router();
-const DB = require('../dbConnection');
+const getVendorDetail = require('../databaseQuery/getvendordetail');
+const postVendorDetail = require('../databaseQuery/postvendordetail');
 
 route.get('/', (req, res)=>{
-    let db = DB.getDbConnection();
-    let query = `SELECT id as "ID", name as "Name", owner_name as "Owner", address as "Address", phone_number as "Contact" from Vendor_Details;`
-
-    let data = [];
-    db.serialize(() => {
-    db.each(query, (err, details) => {
-      if (err) {
-        console.error(err);
-      }
-      console.log(details);
-      data.push(details);  
-    }, ()=>{
-      res.send(JSON.stringify(data))
-    });
-  });
-})
-
-
-route.post('/', (req,res)=>{
-  let db = DB.getDbConnection();
-  let request = req.body;
-  db.exec(`INSERT INTO Vendor_Details (name, owner_name, address, email, pan_number, phone_number, gst_number) VALUES ("${request.name}", "${request.owner_name}", "${request.address}"," ${request.email}", "${request.pan_number}", ${Number(request.phone_number)}, "${request.gst_number}")`, (err)=>{
-    if (err===null){
-      console.log("Success!");
-    } else {
-      console.log("Failed: " + err)
-    }
+  getVendorDetail.getVendorDetail().then((data)=>{
+    res.status(200).send(data)
+  }).catch((err)=>{
+    console.log(err);
   })
 })
 
 
-module.exports = route
+route.post('/', (req,res)=>{
+  let request = req.body;
 
+  let firstCheckPoint = checkVendorField.checkVendorField(request);
+  if (firstCheckPoint === true){} else {
+    return res.status(200).send({"Response": firstCheckPoint})
+  }
+
+  checkVendorDuplicate.checkVendorDuplicate(request).then((duplicate)=>{
+    if(duplicate){
+      res.status(200).send({"Response": "Vendor already exists!"})
+    } else {
+        postVendorDetail.postVendorDetail(request).then((data)=>{
+          res.status(200).send({"Response":data})
+        }).catch((err)=>{
+          console.log(err);
+          res.status(400).send({"Response": err})
+        })
+    }
+  })
+
+  
+  
+
+})
+
+module.exports = route

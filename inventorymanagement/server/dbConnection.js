@@ -6,9 +6,6 @@ let db = null;
 function getDbConnection(){
     if (db === null){
         console.log('Creating Connection');
-        if(DBCONFIG.MODE === 'TEST'){
-                
-        }
         db = new sqlite.Database(DBCONFIG.DBNAME, sqlite.OPEN_READWRITE, (err)=>{
             if (err) {
                 console.log(err);

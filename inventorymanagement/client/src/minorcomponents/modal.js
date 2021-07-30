@@ -1,35 +1,41 @@
-import '../App.css';
-import updateStore from '../apicalls/updatestore';
-import { edits } from '../store/edits';
-import { currentStore } from '../apicalls/currentstate';
+import './table.css';
+import RedButton from './buttons/redbutton';
+import GreenButton from './buttons/greenbutton';
+import { BodyContext } from '../view/AppBody/appbody';
+import { useContext } from 'react';
 
 function Modal(props){
     
-    console.log('Model Re-Rendered ' + props.index);
-    const modalDisplay = props.show ? 'ModalShow' : 'ModalHide' ;
+    console.log('Model Re-Rendered ' + props.editRowValue);
+    let {modalData, show, setShow} = useContext(BodyContext);
 
-    if (currentStore() === null){
-        return <div></div>
+    const modalDisplay = show ? 'ModalShow' : 'ModalHide' ;
+    const data = modalData.editData;
+    const onCancel = modalData.onCancel;
+    const onSave = modalData.onSave;
+    
+    function onSaveClick(){
+        setShow(false);
+        onSave();
     }
 
-    let store = currentStore();
-    let editRow = store[props.index];
+    function onCancelClick(){
+        setShow(false);
+        onCancel();
+    }
 
-    if(props.index == -1){
+    if(!data){
         return null;
-    }
-
-    function clickHandler(){
-        updateStore(props.index, edits.newValue);
-        props.closeDialog();
     }
 
     return (
             <div className= {modalDisplay}>
-                <div className='ModalContent'>
-                    <EditTable editRow={editRow}/>
-                    <button onClick={props.closeDialog} className='btn-red'> Cancel </button>
-                    <button onClick={clickHandler} className='btn-green'> Save </button>
+                <div className='ModalContent'>  
+                    <EditTable editRowValue={data}/>
+                    <div>
+                        <GreenButton clickHandler={onSaveClick}/>
+                        <RedButton closeDialog={onCancelClick}/>
+                    </div>
                 </div>
             </div>
             
@@ -38,33 +44,29 @@ function Modal(props){
 
 function EditTable(props){
 
-    let itemName = Object.keys(props.editRow);
+    let itemName = Object.keys(props.editRowValue);
     return(
-        <form className='ModalTable'>
-            <table>
-                <tr>
+            <table className='ModalTable'>
+                <tr className='tableHeader'>
                     <th> Items </th>
                     <th> New Value </th>
                 </tr>
-                <EditTableItems itemName={itemName} editRow={props.editRow}/>
+                <EditTableItems itemName={itemName} editRow={props.editRowValue}/>
             </table>
-        </form>
     )
 }
 
 function EditTableItems(props){
 
-    var copyValue = {...props.editRow}
-
     return (
         props.itemName.map((item)=>{
+            
             let itemValue = props.editRow[item];
 
             function changeHandler(event){
                 var id = event.target.id;
                 var changedValue = event.target.value;
-                copyValue[id] = changedValue;
-                edits.newValue = copyValue;
+                props.editRow[id] = changedValue;
             }
 
             return(
