@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "./",
+  "main": "./client/desktopApp/main.js",
   "dependencies": {
     "@material-ui/core": "^4.12.2",
     "@testing-library/jest-dom": "^5.14.1",
@@ -33,7 +34,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pack": "electron-builder --dir",
+    "electron-pack": "electron-builder --dir",
     "predist": "npm run build",
     "dist": "electron-builder",
     "preelectron-pack": "npm run build",
