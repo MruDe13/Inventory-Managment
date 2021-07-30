@@ -1,0 +1,25 @@
+.Content-Header {
+    display: flex;
+    flex:auto;
+    margin: 0;
+    justify-content:space-evenly;
+}
+
+.Content-Header-Item{
+    text-decoration: none;
+    color: black;
+    list-style: none;
+}
+
+.Content-Header-Item li:hover{
+    background-color: var(--hover);
+}
+.Content-Header-Item li{
+    display: inline-flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 2px solid black;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 20px;
+}

@@ -1,5 +1,5 @@
 :root{
-    --boxBG: rgb(148, 168, 197);
+    --boxBG: rgb(230,242,250);
     --box-outline: rgb(27, 154, 240);;
     --borderRadius: 0.5rem;
 }
@@ -40,12 +40,12 @@
 .textbox-label{
     font-size: 16px;
     position: absolute;
-    padding:0 0.5rem;
-    top: -0.6rem;
-    left: 0.6rem;
+    padding:0 0.1rem;
+    top: -0.9rem;
+    left: 0.8rem;
     cursor: text;
     transition: top 200ms ease-in, text 200ms ease-in;
-    background-color: rgb(230, 242, 250);
+    background-color: var(--boxBG);
     color: black; 
 }
 
@@ -66,7 +66,7 @@
     padding: 1rem;
     border-radius: var(--borderRadius);
     font-size: 20px;
-    border: 2px solid rgb(27, 154, 240);;
+    border: 2px solid rgb(27, 154, 240);
     color: black;
     text-align: left;
 }
@@ -90,9 +90,10 @@
     width: 12rem;
     height: 3rem;
     border: none;
-    margin:2rem;
+    margin:4rem;
+    margin-left: 6rem;
     border-radius: var(--borderRadius);
-    background-color: rgb(100, 175, 245);
+    background-color: var(--themeColor);
     font-size: 15px;
     transition: text 1200ms ease-in;
 
@@ -111,4 +112,5 @@ input[type=number] {
 input[type=date] {
     font-family: inherit;
     font-size: 20px;
+    line-height: 1;
   }
