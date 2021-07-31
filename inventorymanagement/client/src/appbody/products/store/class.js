@@ -1,4 +1,4 @@
-export class ProductsField{
+class ProductsField{
     constructor(){
         this.productName = "";
         this.type="";
@@ -6,3 +6,5 @@ export class ProductsField{
         this.minimumQuantity=0;
     }
 }
+
+export { ProductsField } 

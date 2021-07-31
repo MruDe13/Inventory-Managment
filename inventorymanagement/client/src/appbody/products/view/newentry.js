@@ -1,6 +1,15 @@
 import { TextBox, Button } from "../../../sharedcomponents/textbox";
 
+
 function Newentry(){
+
+    function changeHandler(){
+
+    }
+
+    function submitHandler(){
+
+    }
     return(
         <div className="EntryForm">
             <div className="EntryFormContent">
