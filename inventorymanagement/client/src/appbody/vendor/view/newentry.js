@@ -18,6 +18,7 @@ function Newentry(){
             </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Pan Number" id="panNumber"/>
+                <TextBox type="number" label="Payment Days" id="paymentDays"/>
             </div>
             <div className="EntryFormContent">
                 <Button buttonText="Submit"/>

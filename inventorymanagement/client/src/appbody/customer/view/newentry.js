@@ -4,7 +4,7 @@ function Newentry(){
     return(
         <div className="EntryForm">
             <div className="EntryFormContent">
-                <TextBox type="text" label="Shop Name*" id="vendorName"/>
+                <TextBox type="text" label="Shop Name*" id="customerName"/>
                 <TextBox type="text" label="Owner Name" id="ownerName"/>
             </div>
             <div className="EntryFormContent">
@@ -17,6 +17,7 @@ function Newentry(){
             </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Pan Number" id="panNumber"/>
+                <TextBox type="number" label="Payment Days" id="paymentDays"/>
             </div>
             <div className="EntryFormContent">
                 <Button buttonText="Submit"/>
