@@ -2,6 +2,7 @@ import { TextBox, DisabledTextBox, Button } from "../../../sharedcomponents/text
 import { SalesField } from "../store/class";
 import { useState } from "react";
 import MakePostAPI from "../../../apicalls/makepostapi";
+import {icons} from "../../../resources/index";
 
 function Newentry(){
 
@@ -55,7 +56,7 @@ function Newentry(){
         <div className="EntryForm" onChange={changeHandler}>
             <div className="EntryFormContent">
                 <DisabledTextBox type="text" label="Bill Number" id=" billNumber" value={billNumber}/>
-                <button onClick={refreshBillNumber}>Refresh</button>
+                <div style={{display:"flex", marginTop:"2rem", marginLeft:"2rem"}}><img src={icons["refresh"]} onClick={refreshBillNumber}/></div>
             </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Buyer Name" id="buyerName"/>

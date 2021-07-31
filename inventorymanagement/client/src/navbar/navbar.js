@@ -17,7 +17,7 @@ function Navbar(){
                 return(
                     <Link style={{textDecoration:"none", color:"black"}} to={`/${endpoint}`}>
                         <li>
-                            <img src={iconSrc} className="NavbarIcons"/>
+                            <div className="NavbarIcons"><img src={iconSrc} /></div>
                             {item}
                         </li>
                     </Link>

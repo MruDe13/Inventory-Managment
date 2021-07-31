@@ -62,6 +62,9 @@
 
 .NavbarIcons {
   padding-right: 0.5rem;
+  display: inline-flex;
+  align-content: center;
+  width: 2rem;
 }
 
 .NavContent{
