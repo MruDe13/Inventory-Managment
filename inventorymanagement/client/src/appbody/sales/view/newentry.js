@@ -1,4 +1,5 @@
 import { TextBox, DisabledTextBox, Button } from "../../../sharedcomponents/textbox";
+import { SalesField } from "../store/class";
 import { useState } from "react";
 
 function Newentry(){

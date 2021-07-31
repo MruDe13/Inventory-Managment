@@ -1,5 +1,5 @@
 import { TextBox, Button } from "../../../sharedcomponents/textbox";
-
+import { ProductsField } from "../store/class";
 
 function Newentry(){
 

@@ -1,4 +1,5 @@
 import { TextBox, Button } from "../../../sharedcomponents/textbox";
+import { VendorField } from "../store/class";
 import "./vendor.css";
 
 function Newentry(){

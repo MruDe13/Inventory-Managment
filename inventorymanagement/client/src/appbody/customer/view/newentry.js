@@ -1,4 +1,5 @@
 import { TextBox, Button } from "../../../sharedcomponents/textbox";
+import { CustomerField } from "../store/class";
 
 function Newentry(){
     return(
