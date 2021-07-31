@@ -38,7 +38,8 @@
   flex-direction: column;
   flex:15%;
   font-size: 20px;
-  border-right: 1px solid black;
+  font-weight: bolder;
+  border-right: 1px solid rgb(29, 27, 27);
   margin:0;
   list-style: none;
   padding-left: 0rem;
@@ -48,15 +49,19 @@
 .Navbar li{
   padding-top: 1rem;
   margin: 0;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(32, 32, 32);
   display: flex;
   justify-content: flex-start;
   padding-bottom: 0.5rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 .Navbar li:hover{
   background-color: var(--hover);
+}
+
+.NavbarIcons {
+  padding-right: 0.5rem;
 }
 
 .NavContent{

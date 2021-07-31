@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./navbar.css";
+import {icons} from "../resources/index"
 
 function Navbar(){
     let navList = ["Dashboard", "Purchase", "Sales", "Raw Material", "Vendor", "Customer", "Products"];
@@ -8,12 +9,15 @@ function Navbar(){
         <ol className="Navbar">
             {navList.map((item)=>{
                 let endpoint = item.toLowerCase().replace(" ", "")
+                let iconSrc = icons[endpoint]
                 if (endpoint==="dashboard"){
                     endpoint = ""
                 }
+                
                 return(
                     <Link style={{textDecoration:"none", color:"black"}} to={`/${endpoint}`}>
                         <li>
+                            <img src={iconSrc} className="NavbarIcons"/>
                             {item}
                         </li>
                     </Link>

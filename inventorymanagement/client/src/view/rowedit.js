@@ -1,4 +1,4 @@
-import PostInventoryDetails from "../apicalls/makepostapi";
+import MakePostAPI from "../apicalls/makepostapi";
 
 function onRowEdit(index, table, changeDialogStatus){
     console.log("onEdit at index " + index);
@@ -8,7 +8,7 @@ function onRowEdit(index, table, changeDialogStatus){
 
     function onSave(){
         table[index] = editData;
-        PostInventoryDetails('update/purchase', editData);
+        MakePostAPI('update/purchase', editData);
     }
     function onCancel(){
         console.log("Fuck off!");

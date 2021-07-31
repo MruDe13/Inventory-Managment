@@ -12,8 +12,8 @@ function TextBox(props){
 
 function DisabledTextBox(props){
     return (
-        <div className="textbox" key={`${props.defaultValue?props.defaultValue:""}`}>
-            <input type={`${props.type}`} autoComplete="off" id={`${props.id}`} className="textbox-input" placeholder={`${props.placeholder?props.placeholder:""}`} defaultValue={`${props.defaultValue?props.defaultValue:""}`} disabled/>
+        <div className="textbox" key={`${props.value?props.value:""}`}>
+            <input type={`${props.type}`} autoComplete="off" id={`${props.id}`} className="textbox-input" placeholder={`${props.placeholder?props.placeholder:""}`} value={`${props.value?props.value:""}`} disabled/>
             <label for={`${props.label}`} className="textbox-label" > {props.label} </label>
         </div>
     )
