@@ -19,5 +19,5 @@ async function getStockDetail(){
     return response;
 }
 
-module.exports = {getStockDetail}
+module.exports = getStockDetail
 
