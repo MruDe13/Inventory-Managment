@@ -3,7 +3,7 @@ import { productsinfo } from "../store/productsinfo";
 
 async function getProductsDetail(){
     let response = new Promise((res,rej)=>{
-        MakeGetAPI("productstable").then((data)=>{
+        MakeGetAPI("producttable").then((data)=>{
             productsinfo = [...data];
             res(productsinfo)
         })
