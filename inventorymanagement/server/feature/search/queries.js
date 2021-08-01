@@ -44,7 +44,7 @@ async function getItemsFromTable(ids, tableName, colName) {
                     data.push(details);
                 },
                 () => {
-                    console.log("query result", data);
+                    //console.log("query result", data);
                     res(data);
                 }
             );

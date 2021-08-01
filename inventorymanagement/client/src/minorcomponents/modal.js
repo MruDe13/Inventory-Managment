@@ -25,6 +25,7 @@ function Modal(props){
     }
 
     if(!data){
+        console.log("Returning null from modal");
         return null;
     }
 
