@@ -1,0 +1,5 @@
+let productsinfo = [];
+
+
+export { productsinfo }
+

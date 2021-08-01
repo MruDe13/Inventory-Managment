@@ -97,6 +97,13 @@
   width: 100%;
 }
 
+.mainView{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
 
 .hide{
   display: none;

@@ -1,5 +1,7 @@
 import './table.css';
 
+// DrawTable expects "Table", "Editable", and "onClick" props. Editable and onClick are optional.
+
 function DrawTable(props){
 
     if (props.Table === null){

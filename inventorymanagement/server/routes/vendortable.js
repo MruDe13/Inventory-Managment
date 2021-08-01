@@ -6,7 +6,7 @@ const getVendorDetail = require('../databaseQuery/getvendordetail');
 const postVendorDetail = require('../databaseQuery/postvendordetail');
 
 route.get('/', (req, res)=>{
-  getVendorDetail.getVendorDetail().then((data)=>{
+  getVendorDetail().then((data)=>{
     res.status(200).send(data)
   }).catch((err)=>{
     console.log(err);

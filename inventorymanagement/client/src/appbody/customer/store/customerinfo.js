@@ -1,0 +1,5 @@
+let customerinfo = [];
+
+
+
+export { customerinfo };

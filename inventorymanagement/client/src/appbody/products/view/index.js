@@ -1,3 +1,3 @@
-export { ProductList } from './productlist';
+export { ProductDetail } from './productdetail';
 export { Newentry } from './newentry';
 export { Header } from './header';

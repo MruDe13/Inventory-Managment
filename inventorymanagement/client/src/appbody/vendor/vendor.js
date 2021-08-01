@@ -1,8 +1,8 @@
-import { Newentry, VendorList, Header} from "./view";
+import { Newentry, VendorDetail, Header} from "./view";
 import { Route, Switch } from "react-router-dom";
 
 function Vendor(){
-    let headerList = ["New Entry", "Vendor List", "Unsettled Debt"];
+    let headerList = ["New Entry", "Vendor Detail", "Unsettled Debt"];
 
     return(
         <div className="NavContent-View">
@@ -14,8 +14,8 @@ function Vendor(){
                     <Route exact path="/vendor/">
                         <Newentry/>
                     </Route>
-                    <Route path="/vendor/vendorlist">
-                        <VendorList/>
+                    <Route path="/vendor/vendordetail">
+                        <VendorDetail/>
                     </Route>
                 </Switch>
             </div>

@@ -59,7 +59,7 @@ function Newentry(){
                 <div style={{display:"flex", marginTop:"2rem", marginLeft:"2rem"}}><img src={icons["refresh"]} onClick={refreshBillNumber}/></div>
             </div>
             <div className="EntryFormContent">
-                <TextBox type="text" label="Buyer Name" id="buyerName"/>
+                <TextBox type="text" label="Customer Name" id="customerName"/>
                 <TextBox type="number" label="Quantity" id="quantity"/>
             </div>
             <div className="EntryFormContent">

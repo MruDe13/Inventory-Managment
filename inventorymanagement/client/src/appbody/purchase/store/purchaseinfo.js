@@ -1,0 +1,3 @@
+let purchaseinfo = [];
+
+export { purchaseinfo }

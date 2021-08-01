@@ -1,3 +1,3 @@
-export { VendorList } from './vendorlist';
+export { VendorDetail } from './vendordetail';
 export { Newentry } from './newentry';
 export { Header } from './header';

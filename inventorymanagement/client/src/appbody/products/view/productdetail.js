@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { rawmaterialinfo } from "../store/rawmaterialinfo";
-import { getRawMaterialDetail } from "../api/getrawmaterialdetail";
+import { vendorinfo } from "../../vendor/store/vendorinfo";
+import { getProductsDetail } from "../api/getproductsdetail";
 import DrawTable from "../../../misc/minorcomponents/tables";
 
-function RawMaterialStock(){
-    let [ detailView, setDetailView] = useState([...rawmaterialinfo]);
+function ProductDetail(){
+    let [ detailView, setDetailView] = useState([...vendorinfo]);
 
     useEffect(()=>{
-        getRawMaterialDetail().then(()=>{
-            setDetailView([...rawmaterialinfo])
+        getProductsDetail().then(()=>{
+            setDetailView([...vendorinfo])
         })
     },[])
 
@@ -26,4 +26,4 @@ function RawMaterialStock(){
     )
 }
 
-export { RawMaterialStock }
+export { ProductDetail }

@@ -1,0 +1,3 @@
+let rawmaterialinfo=[];
+
+export { rawmaterialinfo }
