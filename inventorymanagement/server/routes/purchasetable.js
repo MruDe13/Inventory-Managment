@@ -5,7 +5,7 @@ const getPurchasetDetail = require('../databaseQuery/getpurchasedetail');
 const postPurchasetDetail = require('../databaseQuery/postpurchasedetail');
 
 route.get('/', (req, res)=>{
-    getPurchasetDetail.getPurchasetDetail().then((data)=>{
+    getPurchasetDetail().then((data)=>{
       console.log(data);
       res.status(200).send(data);
     }).catch((err)=>{

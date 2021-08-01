@@ -4,7 +4,7 @@ async function MakeGetAPI (path){
         fetch(`http://localhost:3001/${path}`)
             .then(data => data.json())
             .then((json)=>{ res(json)})
-            .catch((err)=>{ rej(err); alert(JSON.stringify(err))})
+            .catch((err)=>{ rej(err); })
     })
 
     return response;

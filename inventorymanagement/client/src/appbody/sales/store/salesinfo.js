@@ -1,0 +1,3 @@
+let salesinfo=[];
+
+export { salesinfo }

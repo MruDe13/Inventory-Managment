@@ -1,15 +1,18 @@
 const express = require('express');
 const app = express();
-const itemTableRoute = require('./routes/itemtable');
+const rawmaterialTableRoute = require('./routes/rawmaterialtable');
 const purchaseTableRoute = require('./routes/purchasetable');
-const stockTableRoute = require('./routes/stocktable');
+const productTableRoute = require('./routes/producttable');
 const vendorTableRoute = require('./routes/vendortable');
-const updateTableRoute = require('./routes/updatetable');
+
 const searchRoute = require('./routes/search');
 const mSearchManager = require('./feature/')
 
 // Initialize search service
 mSearchManager.initializeSearch(['Item']);
+// const updateTableRoute = require('./routes/updatetable');
+const salesTableRoute = require('./routes/salestable');
+const customerTableRoute = require('./routes/customertable');
 
 function setupCORS(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -20,12 +23,16 @@ function setupCORS(req, res, next) {
 
 app.all('/*', setupCORS);
 app.use(express.json());
-app.use('/itemtable', itemTableRoute);
-app.use('/purchasetable', purchaseTableRoute);
-app.use('/stocktable', stockTableRoute);
-app.use('/vendortable', vendorTableRoute);
+app.use('/rawmaterialtable', rawmaterialTableRoute); //1
+app.use('/purchasetable', purchaseTableRoute); //2
+app.use('/salestable', salesTableRoute); //3
+app.use('/vendortable', vendorTableRoute); //4
+app.use('/producttable', productTableRoute); //5
+// app.use('/paymenttable', vendorTableRoute); //6
+app.use('/customertable', customerTableRoute); //7
 app.use('/update', updateTableRoute);
 app.use('/search', searchRoute);
+
 
 
 app.listen(3001, ()=>{
