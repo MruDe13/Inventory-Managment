@@ -30,7 +30,7 @@ app.use('/vendortable', vendorTableRoute); //4
 app.use('/producttable', productTableRoute); //5
 // app.use('/paymenttable', vendorTableRoute); //6
 app.use('/customertable', customerTableRoute); //7
-app.use('/update', updateTableRoute);
+//app.use('/update', updateTableRoute);
 app.use('/search', searchRoute);
 
 
