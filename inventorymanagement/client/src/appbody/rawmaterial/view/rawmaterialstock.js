@@ -4,11 +4,12 @@ import { getRawMaterialDetail } from "../api/getrawmaterialdetail";
 import DrawTable from "../../../misc/minorcomponents/tables";
 
 function RawMaterialStock(){
-    let [ detailView, setDetailView] = useState([...rawmaterialinfo]);
+    let [ detailView, setDetailView] = useState([]);
 
     useEffect(()=>{
-        getRawMaterialDetail().then(()=>{
-            setDetailView([...rawmaterialinfo])
+        getRawMaterialDetail().then((data)=>{
+            // rawmaterialinfo = [...data];
+            setDetailView([...data])
         })
     },[])
 

@@ -15,10 +15,12 @@ function DrawTable(props){
     }
 
     return (
-        <table className="table">
-            <TableHeader header={header}/>
-            <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} onClick={props.onClick}/>
-        </table>
+        <div className="tableFixedHead">
+            <table className="table">
+                <TableHeader header={header}/>
+                <TableRow table={props.Table} findIndex={findIndex} editable={props.editable} onClick={props.onClick}/>
+            </table>
+        </div>
     )
 }
 
@@ -26,11 +28,13 @@ function DrawTable(props){
 function TableHeader(props) {
 
     return (
-        <tr className='tableHeaderRow'>
-            {props.header.map((headerName) => {
-                return <th className="tableHeaderData">{headerName.toUpperCase()}</th>
-            })}
-        </tr>
+        <thead>
+            <tr className='tableHeaderRow'>
+                {props.header.map((headerName) => {
+                    return <th className="tableHeaderData">{headerName.toUpperCase()}</th>
+                })}
+            </tr>
+        </thead>
     )
 }
 
