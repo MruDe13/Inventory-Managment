@@ -1,3 +1,3 @@
 let vendorinfo = [];
 
-export { vendorinfo }
+module.exports = vendorinfo;

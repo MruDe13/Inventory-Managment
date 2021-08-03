@@ -1,27 +1,44 @@
-import { useState, useEffect } from "react";
-import { vendorinfo } from "../store/vendorinfo";
+import { useState, useEffect, useContext } from "react";
 import { getVendorDetail } from "../api/getvendordetail";
 import DrawTable from "../../../misc/minorcomponents/tables";
+import { LoadingContext } from "../..";
+const vendorinfo = require("../store/vendorinfo");
+
 
 function VendorDetail(){
     let [ detailView, setDetailView] = useState([...vendorinfo]);
+    let [isLoading, setLoading] = useState(true);
+    let [content, setContent] = useState("hide");
+    let { LoadingIndicator } = useContext(LoadingContext);
 
     useEffect(()=>{
-        getVendorDetail().then(()=>{
-            setDetailView([...vendorinfo])
-        })
+        if (detailView.length === 0){
+            getVendorDetail(setDetailView).then(()=>{
+                setLoading(false);
+                setContent("mainView")
+            }).catch(()=>{
+                setLoading(false);
+                setContent("mainView")
+            })
+        } 
     },[])
 
     if(detailView.length === 0){
         return(
-            <div className="mainView">
-                There are no entries.
+            <div className="content">
+                <div className={content}>
+                    There are no entries.
+                </div>
+                <LoadingIndicator isLoading={isLoading}/>
             </div>
         )
     }
     return(
-        <div className="mainView">
-            <DrawTable Table={detailView} editable={false}/>
+        <div className="content">
+            <div className={content}>
+                <DrawTable Table={detailView} editable={false}/>
+            </div>
+            <LoadingIndicator isLoading={isLoading}/>
         </div>
     )
 }

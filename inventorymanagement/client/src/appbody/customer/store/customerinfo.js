@@ -1,5 +1,4 @@
 let customerinfo = [];
 
 
-
-export { customerinfo };
+module.exports = customerinfo;

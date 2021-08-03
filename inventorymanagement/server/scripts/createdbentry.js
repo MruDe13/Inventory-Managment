@@ -61,7 +61,7 @@ function executeQuery(query){
   
 function fillRawMaterialStock(){
     
-    for(let i=0; i<5000; i++){
+    for(let i=0; i<25000; i++){
         let rawMaterialName = generateString();
         let quantity = getRandomInt(100,10000);
         let minimumQuantity = getRandomInt(100,10000);
@@ -85,5 +85,5 @@ function fillVendor(){
         let result = executeQuery(query);
     }
 }
-//fillRawMaterialStock();
-fillVendor();
+fillRawMaterialStock();
+//fillVendor();

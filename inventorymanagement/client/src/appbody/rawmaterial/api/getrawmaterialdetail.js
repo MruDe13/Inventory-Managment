@@ -1,12 +1,14 @@
 import MakeGetAPI from "../../../apicalls/makegetapi";
-import { rawmaterialinfo } from "../store/rawmaterialinfo";
+let rawmaterialinfo = require("../store/rawmaterialinfo");
 
-async function getRawMaterialDetail(){
+async function getRawMaterialDetail(setDetailView){
     let response = new Promise((res,rej)=>{
         MakeGetAPI("rawmaterialtable").then((data)=>{
+            rawmaterialinfo = [...data];
+            setDetailView([...rawmaterialinfo])
             res(data)
-        })
-    });
+            })
+    })
 
     return response 
 }

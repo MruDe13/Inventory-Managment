@@ -1,10 +1,11 @@
 import MakeGetAPI from "../../../apicalls/makegetapi";
-import { purchaseinfo } from "../store/purchaseinfo";
+let purchaseinfo = require("../store/purchaseinfo");
 
-async function getPurchaseDetail(){
+async function getPurchaseDetail(setDetailView){
     let response = new Promise((res,rej)=>{
         MakeGetAPI("purchasetable").then((data)=>{
             purchaseinfo = [...data];
+            setDetailView([...purchaseinfo])
             res(purchaseinfo)
         })
     });

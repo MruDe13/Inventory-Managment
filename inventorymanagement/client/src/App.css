@@ -97,6 +97,12 @@
   width: 100%;
 }
 
+.content{
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 .mainView{
   display: flex;
   align-items: center;

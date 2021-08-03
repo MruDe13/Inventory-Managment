@@ -1,5 +1,5 @@
 let productsinfo = [];
 
 
-export { productsinfo }
+module.exports = productsinfo;
 

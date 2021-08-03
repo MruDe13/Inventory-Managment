@@ -1,3 +1,4 @@
-let rawmaterialinfo=[];
+let rawmaterialinfo = [];
 
-export { rawmaterialinfo }
+module.exports = rawmaterialinfo;
+
