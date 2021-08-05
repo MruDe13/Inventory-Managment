@@ -1,9 +1,9 @@
-const DB = require('../dbConnection');
+const DB = require('../../dbConnection');
 
-async function getRawMaterialDetail(){
+async function getVendorDetail(){
     let db = DB.getDbConnection();
     let data =[];
-    let query = `SELECT * FROM rawmaterialstock`;
+    let query = `SELECT * FROM vendor`;
     let response = new Promise((res, rej)=>{
         db.serialize(() => {
             db.each(query, (err, details) => {
@@ -22,5 +22,5 @@ async function getRawMaterialDetail(){
     return response;
 }
 
-module.exports = getRawMaterialDetail;
+module.exports =  getVendorDetail;
 

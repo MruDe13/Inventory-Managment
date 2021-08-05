@@ -1,9 +1,9 @@
-const DB = require('../dbConnection');
+const DB = require('../../dbConnection');
 
-async function getProductDetail(){
+async function getPurchaseDetail(){
     let db = DB.getDbConnection();
     let data =[];
-    let query = `SELECT * FROM product`;
+    let query = `SELECT * FROM purchase`;
     let response = new Promise((res, rej)=>{
         db.serialize(() => {
             db.each(query, (err, details) => {
@@ -22,4 +22,4 @@ async function getProductDetail(){
     return response;
 }
 
-module.exports = getProductDetail;
+module.exports = getPurchaseDetail;

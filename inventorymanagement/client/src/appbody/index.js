@@ -5,6 +5,7 @@ import { Purchase } from "./purchase/purchase";
 import { RawMaterial } from "./rawmaterial/rawmaterial";
 import { Sales } from "./sales/sales";
 import { Vendor } from "./vendor/vendor";
+import { Production } from "./production/production";
 import {Route, Switch} from 'react-router-dom'
 import { createContext } from 'react';
 import LoadingIndicator from "../misc/minorcomponents/loadingIndicator"
@@ -21,6 +22,9 @@ function Appbody(){
                 </Route>
                 <Route path="/purchase">
                     <Purchase/>
+                </Route>
+                <Route path="/production">
+                    <Production/>
                 </Route>
                 <Route path="/sales">
                     <Sales/>

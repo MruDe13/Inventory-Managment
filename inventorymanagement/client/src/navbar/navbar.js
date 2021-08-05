@@ -3,7 +3,7 @@ import "./navbar.css";
 import {icons} from "../resources/index"
 
 function Navbar(){
-    let navList = ["Dashboard", "Purchase", "Sales", "Raw Material", "Vendor", "Customer", "Products"];
+    let navList = ["Dashboard", "Purchase", "Production", "Sales", "Raw Material", "Vendor", "Customer", "Products"];
 
     return(
         <ol className="Navbar">
