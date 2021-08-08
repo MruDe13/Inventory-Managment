@@ -7,7 +7,8 @@ function Newentry(){
 
     let [ form , setForm] = useState(new ProductionField());
     let keys = Object.keys(form);
-    let today = new Date().toLocaleDateString()
+    let today = new Date().toLocaleDateString();
+    form.date = today;
 
     function changeHandler(event){
         let id = event.target.id;

@@ -23,3 +23,6 @@ route.post('/', (req, res)=>{
         res.status(400).send({"Response": err})
       })
   })
+
+  module.exports = route;
+  

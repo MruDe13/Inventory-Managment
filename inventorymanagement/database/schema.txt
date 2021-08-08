@@ -12,7 +12,7 @@ CREATE TABLE producttransaction (id INTEGER PRIMARY KEY AUTOINCREMENT, productid
 
 CREATE TABLE customer (id INTEGER PRIMARY KEY AUTOINCREMENT, customerName TEXT, ownerName TEXT, phoneNumber INTEGER, address TEXT, email TEXT, gstNumber TEXT, panNumber TEXT, paymentDays INTEGER);
 
-CREATE TABLE sales (id INTEGER PRIMARY KEY AUTOINCREMENT, customerid INTEGER REFERENCES customer (id), productid INTEGER REFERENCES product (id), date DATETIME, quantity INTEGER, billAmount INTEGER, discountPercent INTEGER, discountAmount INTEGER, totalAmount INTEGER, amountReceived INTEGER);
+CREATE TABLE sales (id INTEGER PRIMARY KEY AUTOINCREMENT, customerid INTEGER REFERENCES customer (id), productid INTEGER REFERENCES product (id), date DATETIME, quantity INTEGER, billAmount INTEGER, discountPercent INTEGER, discountAmount INTEGER, totalAmount INTEGER, amountReceived INTEGER, billNumber Text);
 
 CREATE TABLE salespayment (id INTEGER PRIMARY KEY AUTOINCREMENT, customerid INTEGER REFERENCES customer (id), date DATETIME, amountReceived INTEGER);
 

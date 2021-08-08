@@ -1,6 +1,6 @@
 import { TextBox, DisabledTextBox, Button } from "../../../sharedcomponents/textbox";
 import { SalesField } from "../store/class";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import MakePostAPI from "../../../apicalls/makepostapi";
 import {icons} from "../../../resources/index";
 
@@ -8,7 +8,10 @@ function Newentry(){
 
     let [billNumber, setBillNumber] = useState(uniqueNumber());
     let [ form , setForm] = useState(new SalesField());
-    const discountPercentRef = useRef(null);
+    let discountPercentRef = useRef();
+    let discountAmountRef = useRef();
+    let totalAmountRef = useRef();
+    let focusRef = useRef("");
     let keys = Object.keys(form);
 
     form.billNumber = billNumber;
@@ -35,13 +38,39 @@ function Newentry(){
         }
 
         if (id === "discountPercent"){
-            form.discountAmount = ((Number(form.billAmount) * Number(form[id])) / 100);
-            form.totalAmount = (Number(form.billAmount) - Number(form.discountAmount));
+            focusRef.current = "discountPercent";
+            form.discountAmount = ((Number(form.billAmount) * Number(form.discountPercent)) / 100).toFixed(2);
+            form.totalAmount = (Number(form.billAmount) - Number(form.discountAmount)).toFixed(2);
             setForm({...form});
+        }
+        if (id === "discountAmount"){
+            focusRef.current = "discountAmount";
+            form.totalAmount = (Number(form.billAmount) - Number(form.discountAmount)).toFixed(2);
+            form.discountPercent = ((Number(form.discountAmount)/Number(form.billAmount))* 100).toFixed(2);
+            setForm({...form});
+        }
+
+        if(id==="totalAmount"){
+            focusRef.current = "totalAmount";
+            form.discountAmount = Number(form.billAmount) - Number(form.totalAmount).toFixed(2);
+            form.discountPercent = (Number(form.discountAmount)/Number(form.billAmount)* 100 ).toFixed(2) ;
+            setForm({...form});
+        }
+        console.log(form)
+    }
+    useEffect(()=>{
+        console.log("MonsteR", form.discountAmount);
+        if(focusRef.current === "discountPercent"){
             discountPercentRef.current.focus();
         }
-        console.log(form);
-    }
+        if(focusRef.current === "discountAmount"){
+            discountAmountRef.current.focus();
+        }
+        if(focusRef.current === "totalAmount"){
+            totalAmountRef.current.focus();
+        }
+        
+    }, [form.discountAmount, form.discountPercent, form.totalAmount])
 
     function submitHandler(){
 
@@ -63,11 +92,12 @@ function Newentry(){
     return(
         <div className="EntryForm" onChange={changeHandler}>
             <div className="EntryFormContent">
+                <TextBox type="text" label="Customer Name" id="customerName" defaultValue={form.buyerName}/>
                 <DisabledTextBox type="text" label="Bill Number" id=" billNumber" value={billNumber}/>
                 <div style={{display:"flex", marginTop:"2rem", marginLeft:"2rem"}}><img src={icons["refresh"]} onClick={refreshBillNumber}/></div>
             </div>
             <div className="EntryFormContent">
-                <TextBox type="text" label="Customer Name" id="customerName" defaultValue={form.buyerName}/>
+                <TextBox type="text" label="Product Name" id="productName" defaultValue={form.productName}/>
                 <TextBox type="number" label="Quantity" id="quantity" defaultValue={form.quantity}/>
             </div>
             <div className="EntryFormContent">
@@ -75,12 +105,12 @@ function Newentry(){
                 <TextBox type="text" label="Bill Amount" id="billAmount" defaultValue={form.billAmount}/>
             </div>
             <div className="EntryFormContent">
-                <TextBox ref={discountPercentRef} type="text" label="Discount %" id="discountPercent" defaultValue={form.discountPercent}/>
-                <TextBox type="text" label="Discount Amount" id="discountAmount" defaultValue={form.discountAmount}/>   
+                <TextBox setref={discountPercentRef} type="text" label="Discount %" id="discountPercent" defaultValue={form.discountPercent}/>
+                <TextBox setref={discountAmountRef} type="text" label="Discount Amount" id="discountAmount" defaultValue={form.discountAmount}/>   
             </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Amount Received" id="amountReceived" defaultValue={form.amountReceived}/>
-                <TextBox type="text" label="Total Amount" id="totalAmount" defaultValue={form.totalAmount}/>
+                <TextBox setref={totalAmountRef} type="text" label="Total Amount" id="totalAmount" defaultValue={form.totalAmount}/>
             </div>
             <div className="EntryFormContent">
                 <Button buttonText="Submit" onClick={submitHandler}/>

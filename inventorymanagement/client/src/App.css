@@ -36,7 +36,7 @@
 .Navbar{
   display: flex;
   flex-direction: column;
-  flex:15%;
+  flex:0 0 15%;
   font-size: 20px;
   font-weight: bolder;
   border-right: 1px solid rgb(29, 27, 27);

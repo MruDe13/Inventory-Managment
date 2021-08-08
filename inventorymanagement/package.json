@@ -4,7 +4,7 @@
   "private": true,
   "main": "./client/desktopApp/main.js",
   "homepage": "./",
-    "dependencies": {
+  "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -34,9 +34,10 @@
     "eject": "react-scripts eject",
     "preelectron-pack": "npm run build",
     "pack": "electron-builder --dir",
-    "predist":"npm run build",
+    "predist": "npm run build",
     "dist": "electron-builder",
     "postinstall": "electron-builder install-app-deps",
+    "preelectron": "npm run build",
     "electron": "electron .",
     "start-server": "nodemon --inspect ./server/index.js",
     "startOver": "nodemon index.js",

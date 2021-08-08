@@ -1,5 +1,5 @@
 // This contains all the code to create electron app
-const server = require('../../server/index');
+//const server = require('../../server/index');
 const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
@@ -31,7 +31,8 @@ const createWindow = (splashWindow) => {
   });
 
   const appUrl = `${path.join(__dirname, '../../build/index.html')}`;
-  mainBrowserWindow.loadURL(appUrl);
+  const appDebugUrl = "http://localhost:3000"
+  mainBrowserWindow.loadURL(isDev? appDebugUrl: appUrl);
   mainBrowserWindow.once('ready-to-show', () => {
     splashWindow.destroy();
     mainBrowserWindow.maximize();

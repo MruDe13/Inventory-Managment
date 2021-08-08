@@ -5,8 +5,9 @@ async function GetFromTable(db, requirement, tablename, column, inputData){
     let response = new Promise((res, rej)=>{
 
         db.get(query, (err, result)=>{
+            console.log(query)
             if(err || result === undefined){
-                res(undefined);
+                rej(undefined);
                 console.log("Error");
                 return;
             }

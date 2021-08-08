@@ -4,6 +4,7 @@ const rawmaterialTableRoute = require('./routes/rawmaterialtable');
 const purchaseTableRoute = require('./routes/purchasetable');
 const productTableRoute = require('./routes/producttable');
 const vendorTableRoute = require('./routes/vendortable');
+const productionTableRoute = require('./routes/productiontable');
 
 const searchRoute = require('./routes/search');
 const mSearchManager = require('./feature/')
@@ -30,6 +31,7 @@ app.use('/vendortable', vendorTableRoute); //4
 app.use('/producttable', productTableRoute); //5
 // app.use('/paymenttable', paymentTableRoute); //6
 app.use('/customertable', customerTableRoute); //7
+app.use('/productiontable', productionTableRoute);
 //app.use('/update', updateTableRoute);
 app.use('/search', searchRoute);
 

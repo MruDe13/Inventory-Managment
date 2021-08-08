@@ -1,7 +1,8 @@
 export class SalesField{
     constructor(){
         this.billNumber="";
-        this.buyerName = "";
+        this.customerName = "";
+        this.productName="";
         this.quantity=0;
         this.date ="";
         this.billAmount=0;
