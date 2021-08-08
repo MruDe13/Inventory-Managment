@@ -25,7 +25,7 @@ function Newentry(){
         let confirmation = window.confirm('Do you want to proceed?');
         
         if(confirmation){
-            MakePostAPI('productstable', form).then(()=>{
+            MakePostAPI('producttable', form).then(()=>{
                 window.location.reload();
             }).catch(()=>{
                 console.log("Failed");

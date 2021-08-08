@@ -11,7 +11,6 @@ async function getSalesDetail(){
                 console.error(err);
                 rej(JSON.stringify(err))
               }
-              console.log(details);
               data.push(details);  
             }, ()=>{
               res(data)

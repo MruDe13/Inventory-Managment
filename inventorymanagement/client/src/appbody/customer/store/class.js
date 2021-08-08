@@ -3,6 +3,7 @@ export class CustomerField{
         this.customerName = "";
         this.ownerName="";
         this.phoneNumber ="";
+        this.email="";
         this.address="";
         this.gstNumber="";
         this.panNumber="";

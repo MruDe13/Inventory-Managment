@@ -13,7 +13,6 @@ route.get('/', (req, res)=>{
 })
 
 
-
 route.post('/', (req, res)=>{
   let request = req.body;
   postCustomerDetail(request).then((data)=>{
