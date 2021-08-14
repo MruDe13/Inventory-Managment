@@ -11,7 +11,7 @@ function Navbar(){
                 let endpoint = item.toLowerCase().replace(" ", "")
                 let iconSrc = icons[endpoint]
                 if (endpoint==="dashboard"){
-                    endpoint = "/"
+                    endpoint = ""
                 }
                 
                 return(
