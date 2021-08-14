@@ -5,6 +5,7 @@ const postRawMaterialDetail = require('../databaseQuery/post/postrawmaterialdeta
 
 
 route.get('/', (req, res)=>{
+    console.log("get raw material");
     getRawMaterialDetail().then((data)=>{
       res.status(200).send(data)
     }).catch((err)=>{

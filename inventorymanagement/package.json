@@ -36,12 +36,10 @@
     "pack": "electron-builder --dir",
     "predist": "npm run build",
     "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps",
-    "preelectron": "npm run build",
+    "postdist": "electron-builder install-app-deps",
     "electron": "electron .",
     "start-server": "nodemon --inspect ./server/index.js",
-    "startOver": "nodemon index.js",
-    "test-server": "echo \"Error: no test specified\" && exit 1"
+    "startOver": "nodemon index.js"
   },
   "build": {
     "appId": "monster.inventorymanagement",

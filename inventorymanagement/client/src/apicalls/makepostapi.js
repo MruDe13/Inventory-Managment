@@ -1,8 +1,12 @@
+const globalConfig = require('../config');
+
 async function MakePostAPI(path, data){
     console.log(' Post Inventory Details Called.')
-
+    let host = globalConfig.SERVER_HOST;
+    let port = globalConfig.SERVER_PORT;
+    
     let response = new Promise((res,rej)=>{
-        fetch(`http://localhost:3001/${path}`,{
+        fetch(`http://${host}:${port}/${path}`,{
         method:"POST",
         headers: {
             'Content-Type': 'application/json',

@@ -1,7 +1,10 @@
-async function MakeGetAPI (path){
+const globalConfig = require('../config');
 
+async function MakeGetAPI (path){
+    let host = globalConfig.SERVER_HOST;
+    let port = globalConfig.SERVER_PORT;
     let response = new Promise((res,rej)=>{
-        fetch(`http://localhost:3001/${path}`)
+        fetch(`http://${host}:${port}/${path}`)
             .then(data => data.json())
             .then((json)=>{ res(json)})
             .catch((err)=>{ rej(err); })

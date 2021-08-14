@@ -14,12 +14,14 @@ function VendorDetail(){
     useEffect(()=>{
         if (detailView.length === 0){
             getVendorDetail(setDetailView).then(()=>{
-                setLoading(false);
-                setContent("mainView")
+                // setLoading(false);
+                // setContent("mainView");
             }).catch(()=>{
-                setLoading(false);
-                setContent("mainView")
+                // setLoading(false);
+                // setContent("mainView");
             })
+            setLoading(false);
+            setContent("mainView");
         } 
     },[])
 

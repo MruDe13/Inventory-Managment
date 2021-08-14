@@ -1,5 +1,5 @@
 // This contains all the code to create electron app
-//const server = require('../../server/index');
+const server = require('../../server/index');
 const electron = require('electron'),
   app = electron.app,
   BrowserWindow = electron.BrowserWindow,
@@ -8,6 +8,7 @@ const electron = require('electron'),
    
 const path = require('path');
 const url = require('url'); 
+
 const isDev = !app.isPackaged;  // are we in development mode or production.
 
 let mainBrowserWindow;
@@ -19,6 +20,7 @@ function sleep(inteval){
     }, inteval);
   });
 }
+
 const createWindow = (splashWindow) => {
   mainBrowserWindow = new BrowserWindow({ 
       width: 480,
@@ -30,7 +32,7 @@ const createWindow = (splashWindow) => {
       }
   });
 
-  const appUrl = `${path.join(__dirname, '../../build/index.html')}`;
+  const appUrl = `file://${path.join(__dirname, '../../build/index.html')}`;
   const appDebugUrl = "http://localhost:3000"
   mainBrowserWindow.loadURL(isDev? appDebugUrl: appUrl);
   mainBrowserWindow.once('ready-to-show', () => {
@@ -39,7 +41,7 @@ const createWindow = (splashWindow) => {
     mainBrowserWindow.show();
   });
 
-  if (isDev){
+  if (1){
     mainBrowserWindow.webContents.openDevTools();
   }else{
     menu.setApplicationMenu(null);

@@ -15,12 +15,14 @@ function RawMaterialStock(){
     useEffect(()=>{
         if (detailView.length === 0){
             getRawMaterialDetail(setDetailView).then(()=>{
-                setLoading(false);
-                setContent("mainView")
+                // setLoading(false);
+                // setContent("mainView");
             }).catch(()=>{
-                setLoading(false);
-                setContent("mainView")
+                // setLoading(false);
+                // setContent("mainView");
             })
+            setLoading(false);
+            setContent("mainView");
         }
     },[])
 
