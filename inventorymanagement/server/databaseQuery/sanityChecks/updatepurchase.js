@@ -1,4 +1,4 @@
-const DB = require('../dbConnection');
+const DB = require('../../dbConnection');
 
 async function updatePurchase(request){
     let db = DB.getDbConnection();

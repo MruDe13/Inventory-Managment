@@ -16,7 +16,7 @@ const customerTableRoute = require('./routes/customertable');
 mSearchManager.initializeSearch(['Item']);
 
 function setupCORS(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:4172');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   //res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-type');
   next();
