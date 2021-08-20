@@ -9,14 +9,13 @@
     text-decoration: none;
     color: black;
     list-style: none;
-}
-
-.Content-Header-Item li{
-    display: inline-flex;
-    margin-left: 5px;
-    margin-right: 5px;
     border: 2px solid black;
+    margin-right: 5px; 
     padding: 0.2rem;
     border-radius: 0.5rem;
     font-size: 15px;
+}
+
+.Content-Header-Item li{
+    display: inline-flex;   
 }

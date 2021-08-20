@@ -1,5 +1,6 @@
-import { Newentry, RawMaterialStock, Header} from "./view";
+import { Newentry, RawMaterialStock} from "./view";
 import { Route, Switch } from "react-router-dom";
+import { SubNavBar } from "../../sharedcomponents/subnavbar";
 
 function RawMaterial(){
     let headerList = ["New Entry", "Stock Detail", "Unsettled Debt"];
@@ -7,7 +8,7 @@ function RawMaterial(){
     return(
         <div className="NavContent-View">
             <div className='NavContent-Header'>
-                <Header headerList={headerList}/>
+                <SubNavBar headerList={headerList} pathPrefix={"rawmaterial"}/>
             </div>
             <div className='NavContent-Body'>
                 <Switch>

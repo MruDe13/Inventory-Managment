@@ -114,3 +114,26 @@ input[type=date] {
     font-size: 20px;
     line-height: 1;
   }
+
+
+  .Content-Header {
+    display: flex;
+    flex:auto;
+    margin: 0;
+    justify-content:space-evenly;
+}
+
+.Content-Header-Item{
+    text-decoration: none;
+    color: black;
+    list-style: none;
+    border: 2px solid black;
+    margin-right: 5px; 
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    font-size: 15px;
+}
+
+.Content-Header-Item li{
+    display: inline-flex;   
+}

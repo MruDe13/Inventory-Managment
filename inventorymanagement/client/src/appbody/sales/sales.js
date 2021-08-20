@@ -1,5 +1,6 @@
-import { Newentry, SalesTransactions, Header} from "./view";
+import { Newentry, SalesTransactions} from "./view";
 import { Route, Switch } from "react-router-dom";
+import { SubNavBar } from "../../sharedcomponents/subnavbar";
 
 function Sales(){
     let headerList = ["New Entry", "Sales Transactions", "Unsettled Debt"];
@@ -7,7 +8,7 @@ function Sales(){
     return(
         <div className="NavContent-View">
             <div className='NavContent-Header'>
-                <Header headerList={headerList}/>
+                <SubNavBar headerList={headerList} pathPrefix={"sales"}/>
             </div>
             <div className='NavContent-Body'>
                 <Switch>

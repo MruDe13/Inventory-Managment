@@ -9,6 +9,7 @@ async function postCustomerDetail(request){
         queryResponse = await execPostQuery(query);
     } catch(error){
         console.error("Inserting customer detail failed", error);
+        queryResponse = "Failed!"
     }
     
     return queryResponse;

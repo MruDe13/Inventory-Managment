@@ -9,6 +9,7 @@ async function postProductDetail(request){
         queryResponse = await execPostQuery(query);
     } catch(error){
         console.error("Inserting product detail failed");
+        queryResponse = "Failed!"
     }
     
     return queryResponse;

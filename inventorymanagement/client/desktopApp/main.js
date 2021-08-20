@@ -41,7 +41,7 @@ const createWindow = (splashWindow) => {
     mainBrowserWindow.show();
   });
 
-  if (1){
+  if (isDev){
     mainBrowserWindow.webContents.openDevTools();
   }else{
     menu.setApplicationMenu(null);
@@ -65,7 +65,7 @@ const createSplashWindow = () => {
 
 app.on('ready', () => {
   const splashWindow = createSplashWindow(); 
-  sleep(5000).then(()=>{
+  sleep(1000).then(()=>{
     createWindow(splashWindow);
   });
   

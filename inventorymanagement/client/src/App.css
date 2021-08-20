@@ -6,13 +6,16 @@
   font-family: 'Mukta', sans-serif;
   --bgColor : rgb(230,242,250);
   --themeColor: rgb(27, 154, 240);
-  --hover: rgb(11, 110, 240);
+  --hover: rgb(168, 220, 255);
+  display: flex;
+  width: 100%;
 }
 
 .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
 .AppName{
@@ -116,20 +119,6 @@
   display: none;
 }
 
-.ModalHide {
-  display: none;
-}
-
-.ModalShow {
-  display: block;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-  background-color: black ;
-  opacity: 95%;
-  align-items: center;
-}
 
 
 .btn-green {
@@ -143,3 +132,16 @@
 }
 
 
+.EntryForm{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.EntryFormContent{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  
+}

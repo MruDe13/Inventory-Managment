@@ -12,6 +12,7 @@
     "concurrently": "^6.2.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "electron-log": "^4.4.1",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
@@ -48,8 +49,7 @@
       "build/**/*",
       "node_modules/**/*",
       "client/desktopApp/main.js",
-      "server/**/*",
-      "database/**/*"
+      "server/**/*"
     ],
     "directories": {
       "buildResources": "assets"

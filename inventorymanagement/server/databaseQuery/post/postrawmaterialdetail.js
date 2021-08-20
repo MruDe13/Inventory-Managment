@@ -9,6 +9,7 @@ async function postRawMaterialDetail(request){
         queryResponse = await execPostQuery(query);
     } catch(error){
         console.error("Inserting raw material detail failed", error);
+        queryResponse = "Failed!"
     }
     
     return queryResponse;

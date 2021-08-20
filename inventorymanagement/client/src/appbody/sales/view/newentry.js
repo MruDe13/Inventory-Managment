@@ -3,6 +3,7 @@ import { SalesField } from "../store/class";
 import { useRef, useState, useEffect } from "react";
 import MakePostAPI from "../../../apicalls/makepostapi";
 import {icons} from "../../../resources/index";
+import { modalConfirm, modalAlert } from "../../../modals";
 
 function Newentry(){
 
@@ -72,20 +73,18 @@ function Newentry(){
         
     }, [form.discountAmount, form.discountPercent, form.totalAmount])
 
-    function submitHandler(){
-
-        let confirmation = window.confirm('Do you want to proceed?');
-        
+    async function submitHandler(){
+        let confirmation = await modalConfirm.confirm("Do you want to proceed?");
         if(confirmation){
             MakePostAPI('salestable', form).then(()=>{
+                modalAlert.alert("Successful!");
                 window.location.reload();
             }).catch(()=>{
-                console.log("Failed");
+                modalAlert.alert("Failed!");
             });
         } else {
-            alert("Operation Canceled!");
+            modalAlert.alert("Operation Canceled!");    
         }
-        
     }
 
 

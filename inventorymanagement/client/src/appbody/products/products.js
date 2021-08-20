@@ -1,5 +1,6 @@
-import { Newentry, ProductDetail, Header} from "./view";
+import { Newentry, ProductDetail} from "./view";
 import { Route, Switch } from "react-router-dom";
+import { SubNavBar } from "../../sharedcomponents/subnavbar";
 
 function Products(){
     let headerList = ["New Entry", "Product Detail", "Unsettled Debt"];
@@ -7,7 +8,7 @@ function Products(){
     return(
         <div className="NavContent-View">
             <div className='NavContent-Header'>
-                <Header headerList={headerList}/>
+                <SubNavBar headerList={headerList} pathPrefix={"products"}/>
             </div>
             <div className='NavContent-Body'>
                 <Switch>

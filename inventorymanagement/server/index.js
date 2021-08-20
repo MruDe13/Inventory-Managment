@@ -11,6 +11,14 @@ const globalConfig = require('./config');
 // const updateTableRoute = require('./routes/updatetable');
 const salesTableRoute = require('./routes/salestable');
 const customerTableRoute = require('./routes/customertable');
+const DB = require('./dbConnection');
+const DBCONFIG = require('./configuration');
+const log = require('electron-log');
+const path = require('path');
+const logFile = path.join(DBCONFIG.DBPATH, DBCONFIG.LOGNAME) ;
+console.log("Log Path is:" , logFile);
+log.transports.file.resolvePath = () => logFile;
+log.transports.file.level = "debug";
 
 // Initialize search service
 mSearchManager.initializeSearch(['Item']);
@@ -21,6 +29,7 @@ function setupCORS(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-type');
   next();
 }
+
 
 app.all('/*', setupCORS);
 app.use(express.json());
@@ -35,9 +44,13 @@ app.use('/productiontable', productionTableRoute);
 //app.use('/update', updateTableRoute);
 app.use('/search', searchRoute);
 
-console.log("Try to start server");
+log.info("Try to start server");
 app.listen(globalConfig.SERVER_PORT, ()=>{
-  console.log('running on port', globalConfig.SERVER_PORT);
+  log.info('running on port', globalConfig.SERVER_PORT);
 })
+
+if (!DB.getDbConnection()){
+  window.alert("Couldn't connect to Database.")
+}
 
 module.exports = app;

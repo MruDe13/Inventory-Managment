@@ -17,6 +17,7 @@ async function execPostQuery(query){
             if (err){
                 return rej("Query execution failed ", err);
             }
+            res("Successful");
         });
     })
 

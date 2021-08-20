@@ -8,6 +8,7 @@ async function postVendorDetail(request){
         queryResponse = await execPostQuery(query);
     } catch(error){
         console.error("Inserting vendor detail failed");
+        queryResponse = "Failed!"
     }
     
     return queryResponse;

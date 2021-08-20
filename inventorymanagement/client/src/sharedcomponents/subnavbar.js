@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
-import "./purchase.css";
+import { useState } from "react";
 
-function Header(props){
+function SubNavBar(props){
     let headerList = props.headerList;
+    let [activeNav, setActiveNav] = useState(0)
 
     return(
         <ul className="Content-Header">
-            {headerList.map((item)=>{
+            {headerList.map((item, index)=>{
                 let endpoint = item.toLowerCase().replace(" ", "")
                 if (endpoint === 'newentry'){
                     endpoint = ""
                 }
                 return(
-                    <Link to={`/purchase/${endpoint}`} className="Content-Header-Item">
+                    <Link 
+                    to={`/${props.pathPrefix}/${endpoint}`} 
+                    className={`Content-Header-Item ${index===activeNav? "Active":""}`}
+                    onClick={()=>{setActiveNav(index)}}
+                    >
                         <li>
                             {item}
                         </li>
@@ -23,4 +28,4 @@ function Header(props){
     )
 }
 
-export { Header }
+export { SubNavBar }

@@ -1,5 +1,6 @@
-import { Newentry, VendorDetail, Header} from "./view";
+import { Newentry, VendorDetail} from "./view";
 import { Route, Switch } from "react-router-dom";
+import { SubNavBar } from "../../sharedcomponents/subnavbar";
 
 function Vendor(){
     let headerList = ["New Entry", "Vendor Detail", "Unsettled Debt"];
@@ -7,7 +8,7 @@ function Vendor(){
     return(
         <div className="NavContent-View">
             <div className='NavContent-Header'>
-                <Header headerList={headerList}/>
+                <SubNavBar headerList={headerList} pathPrefix={"vendor"}/>
             </div>
             <div className='NavContent-Body'>
                 <Switch>
