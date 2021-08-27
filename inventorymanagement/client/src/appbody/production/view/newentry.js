@@ -29,7 +29,6 @@ function Newentry(){
         if(confirmation){
             MakePostAPI('productiontable', form).then(()=>{
                 modalAlert.alert("Successful!");
-                window.location.reload();
             }).catch(()=>{
                 modalAlert.alert("Failed!");
             });
@@ -41,13 +40,16 @@ function Newentry(){
 
     return(
         <div className="EntryForm" onChange={changeHandler}>
+            <div className="FormTitle">
+                <h2>Production Details</h2>
+            </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Product Name*" id="productName"/>
                 <DisabledTextBox type="text" label="Date" id="date" value={today}/>
             </div>
             <div className="EntryFormContent">
                 <TextBox type="number" label="Quantity" id="quantity"/>
-                <TextBox type="text" label="remarks" id="remarks"/>
+                <TextBox type="text" label="Remarks" id="remarks"/>
             </div>
             <div className="EntryFormContent">
                 <Button buttonText="Submit" onClick={submitHandler}/>

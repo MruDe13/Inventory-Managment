@@ -26,7 +26,6 @@ function Newentry(){
         if(confirmation){
             MakePostAPI('producttable', form).then(()=>{
                 modalAlert.alert("Successful!");
-                window.location.reload();
             }).catch(()=>{
                 modalAlert.alert("Failed!");
             });
@@ -37,6 +36,9 @@ function Newentry(){
 
     return(
         <div className="EntryForm" onChange={changeHandler}>
+            <div className="FormTitle">
+                <h2>Product Details</h2>
+            </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Product Name*" id="productName"/>
                 <TextBox type="text" label="Type" id="type"/>

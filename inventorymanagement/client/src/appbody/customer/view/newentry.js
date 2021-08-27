@@ -27,7 +27,6 @@ function Newentry(){
         if(confirmation){
             MakePostAPI('customertable', form).then(()=>{
                 modalAlert.alert("Successful!");
-                window.location.reload();
             }).catch(()=>{
                 modalAlert.alert("Failed!");
             });
@@ -39,6 +38,9 @@ function Newentry(){
 
     return(
         <div className="EntryForm" onChange={changeHandler}>
+            <div className="FormTitle">
+                <h2>Customer Details</h2>
+            </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Shop Name*" id="customerName"/>
                 <TextBox type="text" label="Owner Name" id="ownerName"/>

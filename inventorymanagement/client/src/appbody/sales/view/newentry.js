@@ -78,7 +78,6 @@ function Newentry(){
         if(confirmation){
             MakePostAPI('salestable', form).then(()=>{
                 modalAlert.alert("Successful!");
-                window.location.reload();
             }).catch(()=>{
                 modalAlert.alert("Failed!");
             });
@@ -90,10 +89,13 @@ function Newentry(){
 
     return(
         <div className="EntryForm" onChange={changeHandler}>
+            <div className="FormTitle">
+                <h2>Sales Details</h2>
+            </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Customer Name" id="customerName" defaultValue={form.buyerName}/>
                 <DisabledTextBox type="text" label="Bill Number" id=" billNumber" value={billNumber}/>
-                <div style={{display:"flex", marginTop:"2rem", marginLeft:"2rem"}}><img src={icons["refresh"]} onClick={refreshBillNumber}/></div>
+                <div style={{display:"inline-flex", marginTop:"2rem", marginLeft:"2rem", position:"absolute", right:"3rem"}}><img src={icons["refresh"]} onClick={refreshBillNumber}/></div>
             </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Product Name" id="productName" defaultValue={form.productName}/>

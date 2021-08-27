@@ -77,13 +77,14 @@
   text-align: center;
   margin: 0;
   background-color:var(--bgColor);
+  width: 100%;
 }
 
 .NavContent-View{
   display: flex;
   flex-direction: column;
-  flex: auto;
   align-items: center;
+  width: 100%;
 }
 
 .NavContent-Header{
@@ -98,25 +99,30 @@
   display: flex;
   flex: 90%;
   width: 100%;
+  position: relative;
 }
 
 .content{
   display: flex;
   width: 100%;
-  align-items: center;
+  position: absolute;
+  top: 1rem;
 }
 
 .mainView{
-  display: flex;
-  align-items: center;
   width: 100%;
-  height: 100%;
-  justify-content: center;
 }
 
 
 .hide{
   display: none;
+}
+
+.FormTitle{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 
 
@@ -141,7 +147,7 @@
 
 .EntryFormContent{
   display: flex;
-  flex-direction: row;
   width: 100%;
+  justify-content: space-around;
   
 }

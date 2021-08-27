@@ -8,7 +8,6 @@
     position: relative;
     width: 20rem;
     margin: 2rem;
-    margin-left: 6rem;
 }
 
 .textbox-input{
@@ -116,7 +115,7 @@ input[type=date] {
   }
 
 
-  .Content-Header {
+.Content-Header {
     display: flex;
     flex:auto;
     margin: 0;

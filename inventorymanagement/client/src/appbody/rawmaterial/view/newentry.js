@@ -26,7 +26,6 @@ function Newentry(){
         if(confirmation){
             MakePostAPI('rawmaterialtable', form).then(()=>{
                 modalAlert.alert("Successful!");
-                window.location.reload();
             }).catch(()=>{
                 modalAlert.alert("Failed!");
             });
@@ -38,6 +37,9 @@ function Newentry(){
 
     return(
         <div className="EntryForm" onChange={changeHandler}>
+            <div className="FormTitle">
+                <h2>Raw Material Details</h2>
+            </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Raw Material Name*" id="rawMaterialName"/>
                 <TextBox type="text" label="Type" id="type"/>

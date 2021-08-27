@@ -1,4 +1,6 @@
+import { modalAlert } from '../modals';
 const globalConfig = require('../config');
+
 
 async function MakePostAPI(path, data){
     console.log(' Post Inventory Details Called.')
@@ -14,7 +16,7 @@ async function MakePostAPI(path, data){
         body: JSON.stringify(data)
         })
             .then(data => data.json())
-            .then((json)=>{ res(json); alert(json["Response"])})
+            .then((json)=>{ res(json)})
             .catch((err)=>{ rej(err)})
     });
     

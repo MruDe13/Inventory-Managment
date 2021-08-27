@@ -26,7 +26,6 @@ function Newentry(){
         if(confirmation){
             MakePostAPI('vendortable', form).then(()=>{
                 modalAlert.alert("Successful!");
-                window.location.reload();
             }).catch(()=>{
                 modalAlert.alert("Failed!");
             });
@@ -37,6 +36,9 @@ function Newentry(){
 
     return(
         <div className="EntryForm" onChange={changeHandler}>
+            <div className="FormTitle">
+                <h2>Vendor Details</h2>
+            </div>
             <div className="EntryFormContent">
                 <TextBox type="text" label="Shop Name*" id="vendorName"/>
                 <TextBox type="text" label="Owner Name" id="ownerName"/>

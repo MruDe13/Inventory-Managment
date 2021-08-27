@@ -2,7 +2,7 @@ const execGetQuery = require('../utils/execGetQuery');
 
 async function getRawMaterialDetail(){
 
-    let query = `SELECT * FROM rawmaterialstock`;
+    let query = `SELECT id, rawMaterialName as "Material Name", type as "Type of Material", remarks, quantity, minimumQuantity as "Minimum Required Qty" FROM rawmaterialstock;`;
     let response = null;
     try{
         response = await execGetQuery(query);
