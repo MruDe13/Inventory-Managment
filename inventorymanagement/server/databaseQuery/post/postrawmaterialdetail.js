@@ -15,6 +15,4 @@ async function postRawMaterialDetail(request){
     return queryResponse;
 }
 
-
 module.exports = postRawMaterialDetail;
-

@@ -4,7 +4,7 @@ async function execGetQuery(query){
     
     console.info("execGetQuery query: ", query);
     
-    if(typeof(query) === String && query.length === 0){
+    if(typeof(query) === "string" && query.length === 0){
         console.warn("Empty query is being passed to executor. Please check the calling code");
     }
 
