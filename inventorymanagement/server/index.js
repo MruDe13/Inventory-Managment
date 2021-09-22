@@ -78,7 +78,7 @@ connectToDB().then((dbConnectionstatus)=>{
     //    server.close();
     }else{
         // Initialize search service
-        mSearchManager.initializeSearch(['Item']);
+        mSearchManager.initializeSearch();
     }
 });
 

@@ -3,10 +3,10 @@ const getItemsToFillStore = queries.getItemsToFillStore;
 const getItemsFromTable = queries.getItemsFromTable;
 
 class SearchStore{
-    constructor(context, colToIndex){
-        this.context = context;
+    constructor(tableName, colName){
+        this.tableName = tableName; //Table name
         this.store = new Map();
-        this.colToIndex = colToIndex;
+        this.colName = colName; //Name of the column for which we create map
     }
   
     createIndex(items){
@@ -26,8 +26,8 @@ class SearchStore{
     }
 
     async fillStore(){
-        console.log("Fill store called ", this.context, this.colToIndex);
-        let items = await getItemsToFillStore(this.context, this.colToIndex);
+        console.log("Fill store called ", this.tableName, this.colName);
+        let items = await getItemsToFillStore(this.tableName, this.colName);
         this.createIndex(items);
     }
 
@@ -36,8 +36,11 @@ class SearchStore{
     }
 
     async search(query){
+        let data = []
         let ids = this.store.get(query);
-        let data = await getItemsFromTable(ids, this.context, this.colToIndex);
+        if(ids && ids.length > 0){
+            data = await getItemsFromTable(ids, this.tableName, this.colName);
+        }
         return data;
     }
 
