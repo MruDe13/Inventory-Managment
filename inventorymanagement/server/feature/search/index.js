@@ -8,10 +8,10 @@ class SearchManager{
     initializeSearch(context, forceCreateStore = false){
         console.log("Start searchManager");
         if(forceCreateStore || this.searchContext.size === 0){
-            this.context = context;//Context is an array of table which search service should index to server its query.
+            this.context = context; //Context is an array of table which search service should index to server its query.
             
             for(let i=0; i<this.context.length; i++){
-                let colToIndex = colToIndexConfig[this.context[i]   ];
+                let colToIndex = colToIndexConfig[this.context[i]];
                 
                 for(let j=0; j<colToIndex.length; j++){
                     let mSearchStore = new SearchStore(this.context[i], colToIndex);
@@ -31,6 +31,9 @@ class SearchManager{
         }
     }
 
+    /* 
+        Called by search API to get input 
+    */
     async search(context, searchParam){
         console.log('Params received at SearchManager', context, searchParam);
         let searchStore = this.searchContext.get(context);
