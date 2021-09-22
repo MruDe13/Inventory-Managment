@@ -2,11 +2,11 @@ const colToIndexConfig = require('./conf');
 const SearchStore = require('./searchStore');
 class SearchManager{
     constructor(){
-        console.log("Start searchManager");
         this.searchContext = new Map(); // this map has entry each context as key and SearchStore as val
     }
 
     initializeSearch(context, forceCreateStore = false){
+        console.log("Start searchManager");
         if(forceCreateStore || this.searchContext.size === 0){
             this.context = context;//Context is an array of table which search service should index to server its query.
             

@@ -12,7 +12,7 @@ async function execGetQuery(query){
         console.warn("Passing non-string to runGetQuery. We only support running single select query as of now!!");
     }
     
-    let db = DB.getDbConnection();
+    let db = DB.getDbHandle();
     let data =[];
 
     let queryExecPromise = new Promise((res,rej)=>{

@@ -1,4 +1,4 @@
-const SearchManager = require('./search/search')
+const SearchManager = require('./search/index')
 
 
 module.exports = SearchManager;

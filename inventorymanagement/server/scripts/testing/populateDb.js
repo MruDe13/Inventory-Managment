@@ -1,6 +1,5 @@
 const sqlite = require('sqlite3').verbose();
-const DBCONFIG = require('../configuration');
-const getDbConnection = require("../dbConnection");
+const DBCONFIG = require('../../configuration');
 
 // let db = getDbConnection();
 
