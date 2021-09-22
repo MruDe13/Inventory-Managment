@@ -18,7 +18,7 @@ async function execMultiplePostQuery(queries){
         return new Promise.reject("Expected array with size greater than 1", queries);
     }
  
-    let db = DB.getDbConnection();
+    let db = DB.getDbHandle();
     let dbInsertPromise = new Promise((res,rej)=>{
         db.serialize(()=>{
             for(let i = 0; i<queries.length; i++){

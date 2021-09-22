@@ -13,7 +13,7 @@ async function execPostQuery(query){
         return new Promise.reject("Unsupported type!", query);
     }
     
-    let db = DB.getDbConnection();
+    let db = DB.getDbHandle();
     let dbInsertPromise = new Promise((res,rej)=>{
         db.exec(query, (err)=>{
             if (err){

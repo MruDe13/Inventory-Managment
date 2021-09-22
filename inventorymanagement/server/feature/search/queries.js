@@ -1,7 +1,7 @@
 const DB = require("../../dbConnection");
 
 async function getItemsToFillStore(tableName, colToIndex) {
-    let db = DB.getDbConnection();
+    let db = await DB.getDbHandle();
     let data = [];
     let query = `SELECT id,${colToIndex} from ${tableName}`;
 
@@ -27,7 +27,7 @@ async function getItemsToFillStore(tableName, colToIndex) {
 }
 
 async function getItemsFromTable(ids, tableName, colName) {
-    let db = DB.getDbConnection();
+    let db = DB.getDbHandle();
     let data = [];
 
     let query = `Select ${colName} from ${tableName} where id in (${ids.toString()});`;
