@@ -3,21 +3,28 @@ import { CustomerField } from "../store/class";
 import { useState } from "react";
 import MakePostAPI from "../../../apicalls/makepostapi";
 import { modalConfirm, modalAlert} from "../../../modals";
+import MakeGetAPI from "../../../apicalls/makegetapi";
+import { Suggestions } from "../../../sharedcomponents/suggestion";
 
 function Newentry(){
 
     let [ form , setForm] = useState(new CustomerField());
+    let [nameSuggestion, setNameSuggestion] = useState([])
     let keys = Object.keys(form);
 
-    function changeHandler(event){
+    async function changeHandler(event){
         let id = event.target.id;
-        console.log(id);
+        let newValue= event.target.value;
         let i;
         for (i in keys){
             if (keys[i] === id){
                 form[id] = event.target.value;
             }
         }
+        let suggestedNames = await(MakeGetAPI(`search?context=rawmaterialstock&searchParam=${newValue}`));
+        let newArray = suggestedNames.slice(0,10);
+        setNameSuggestion([...newArray]);
+        console.log("Suggestion Set");
         console.log(form);
     }
 
@@ -42,7 +49,8 @@ function Newentry(){
                 <h2>Customer Details</h2>
             </div>
             <div className="EntryFormContent">
-                <TextBox type="text" label="Shop Name*" id="customerName"/>
+                <TextBox type="text" label="Shop Name*" id="customerName" list="customerNameSuggestion"/>
+                <Suggestions suggestedList={nameSuggestion} datalistId="customerNameSuggestion" columnName="rawMaterialName" />
                 <TextBox type="text" label="Owner Name" id="ownerName"/>
             </div>
             <div className="EntryFormContent">

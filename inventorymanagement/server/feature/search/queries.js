@@ -4,7 +4,7 @@ async function getItemsToFillStore(tableName, colToIndex) {
     let db = await DB.getDbHandle();
     let data = [];
     let query = `SELECT id,${colToIndex} from ${tableName}`;
-
+    console.log(query);
     let response = new Promise((res, rej) => {
         db.serialize(() => {
             db.each(

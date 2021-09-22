@@ -3,7 +3,7 @@
 *   Key to the object is name of the table and value is an array of columns which we want to index
 */
 const colToIndexConfig = {
-    Item: ['name']
+    rawmaterialstock: ['rawMaterialName']
 }
 
 module.exports = colToIndexConfig;

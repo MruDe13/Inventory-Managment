@@ -1,21 +1,21 @@
 const sqlite = require('sqlite3').verbose();
 const DBCONFIG = require('../../configuration');
 
-let db = null;
+// let db = getDbConnection();
 
-function getDbConnection(){
-    if (db === null){
-        console.log('Creating Connection');
-        db = new sqlite.Database(DBCONFIG.DBNAME, sqlite.OPEN_READWRITE, (err)=>{
-            if (err) {
-                console.log(err);
-            }
-            console.log('Connected to Inventory Management DB.');
-        });
-    }
+// function getDbConnection(){
+//     if (db === null){
+//         console.log('Creating Connection');
+//         db = new sqlite.Database(DBCONFIG.DBNAME, sqlite.OPEN_READWRITE, (err)=>{
+//             if (err) {
+//                 console.log(err);
+//             }
+//             console.log('Connected to Inventory Management DB.');
+//         });
+//     }
     
-    return db;
-}
+//     return db;
+// }
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -38,7 +38,7 @@ function generateString(len=15){
 }
 
 function executeQuery(query){
-    let db = getDbConnection();
+    let db = getDbConnection.getDbConnection();
     let queryResult = new Promise((res, rej) => {
         db.serialize(() => {
             db.each(
@@ -61,7 +61,7 @@ function executeQuery(query){
   
 function fillRawMaterialStock(){
     
-    for(let i=0; i<25000; i++){
+    for(let i=0; i<5000; i++){
         let rawMaterialName = generateString();
         let quantity = getRandomInt(100,10000);
         let minimumQuantity = getRandomInt(100,10000);
