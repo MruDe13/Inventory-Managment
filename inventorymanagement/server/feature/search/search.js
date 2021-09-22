@@ -11,7 +11,7 @@ class SearchManager{
             this.context = context;//Context is an array of table which search service should index to server its query.
             
             for(let i=0; i<this.context.length; i++){
-                let colToIndex = colToIndexConfig[this.context[i]   ];
+                let colToIndex = colToIndexConfig[this.context[i]];
                 
                 for(let j=0; j<colToIndex.length; j++){
                     let mSearchStore = new SearchStore(this.context[i], colToIndex);
@@ -47,3 +47,4 @@ class SearchManager{
 }
 
 module.exports = new SearchManager();
+

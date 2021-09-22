@@ -2,17 +2,20 @@
     display: flex;
     width: 100%;
     overflow: auto;
-    border-bottom: 1px solid black;
     margin-top: -1rem;
     margin-bottom: -1rem;
+    position: absolute;
 }
 
 .table{
     border-collapse: collapse;
     width: 100%;
-    
-
+    position: relative;;
 }
+
+/* .tableHeaderRow {
+    position: sticky;
+} */
 
 
 .tableHeaderData{

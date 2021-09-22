@@ -11,7 +11,7 @@ class SearchStore{
   
     createIndex(items){
         items.forEach(element => {
-            let name = element.name;
+            let name = element.rawMaterialName;
             for(let i=0; i<=name.length; i++){
                 let key = name.substring(0, i);
                 if(this.store.has(key)){

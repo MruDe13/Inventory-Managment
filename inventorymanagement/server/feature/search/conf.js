@@ -1,5 +1,5 @@
 const colToIndexConfig = {
-    Item: ['name']
+    rawmaterialstock: ['rawMaterialName']
 }
 
 module.exports = colToIndexConfig;

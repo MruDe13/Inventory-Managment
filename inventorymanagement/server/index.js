@@ -21,7 +21,7 @@ log.transports.file.resolvePath = () => logFile;
 log.transports.file.level = "debug";
 
 // Initialize search service
-mSearchManager.initializeSearch(['Item']);
+mSearchManager.initializeSearch(['rawmaterialstock']);
 
 function setupCORS(req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
